@@ -1,0 +1,21 @@
+#summary How to copy EBooks to your iPhone so Books.app can read them.
+
+= Introduction =
+
+This tutorial uses iPHUC to install eBooks into your Media/EBooks directory, where Books.app looks for them.  It is not neccesary to jailbreak your phone to do so--but of course, if you've installed Books.app your phone has already been jailbroken...
+
+This tutorial has been written for Mac OS X.
+
+
+= Details =
+
+  # Get and install [http://iphuc.googlecode.com/ iPHUC].
+  # Plug in your iPhone to your computer.  If iTunes opens, let your phone sync and then quit iTunes.
+  # Run iPHUC from the command-line (Terminal.app on a Mac).
+  # Type: {{{ ls }}} to see your Media directory.  If you haven't already created an EBooks folder, type {{{ mkdir EBooks }}}.
+  # Type: {{{ cd EBooks  }}} to put yourself into the EBooks directory.
+  # Assuming you have a text file in your home directory, you can copy it to the EBooks folder by typing {{{ putfile /Users/yourusername/some_book.txt some_book.txt }}} where "yourusername" is your user name.  Note that, at least at this point, iPHUC requires the full path to the file you're copying.
+  # If you want a prettier name on the Books.app file browser, you could type {{{ putfile /Users/yourusername/some_book.txt Some\ Book,\ by\ Jane\ Author }}}.  Note you need to escape all spaces with backslashes.
+  # If you have a directory which contains a book broken up into chapters, you need to create a new directory and copy over each file separately.  Pain in the neck, but I hope to have a tool to automate this soon.
+
+You can also use scp (secure copy) to copy over files.  That's beyond the scope of this document (for now).
