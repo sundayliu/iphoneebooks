@@ -1,0 +1,13 @@
+#summary Installing Books.app on your iPhone.
+
+= Introduction =
+
+Installing an application on the iPhone  is not a simple process.  If you don't know what "jailbreak" or "iPHUC" means, you should google those terms.  iFuntastic may also be helpful.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
