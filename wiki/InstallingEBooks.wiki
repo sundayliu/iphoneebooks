@@ -1,4 +1,5 @@
 #summary How to copy EBooks to your iPhone so Books.app can read them.
+#labels Featured
 
 = Introduction =
 
