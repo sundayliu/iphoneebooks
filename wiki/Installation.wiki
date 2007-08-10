@@ -7,7 +7,4 @@ Installing an application on the iPhone  is not a simple process.  If you don't 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+See [http://code.google.com/p/mobileterminal/wiki/Installation mobileterminal's install page] for information on how to install an application.  Be warned, it involves installing an SSH server on the iPhone.  Fortunately, InstallingEBooks is much easier.
