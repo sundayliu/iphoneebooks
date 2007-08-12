@@ -8,6 +8,9 @@ List of things I, roosterspice, want to do with the app.  If you'd like to add a
 
 = Details =
 
+  * Bookmarking?  Press a button to set a bookmark at the top of the page, click the bookmark to remove it.  Is this neccesary if persistence works?  Some sort of "Go to bookmark" functionality would also be needed as well, then.
+  * Better filenames for chapters, via GutenSplit.
+
 As of 8/10/2007
   * Implement persistence, so the application picks up where you left off when you re-open it.
   * Implement real-time text resizing, ideally via simple taps and double-taps. -- *Sorta works.  A two-finger tap increases the text size.*
