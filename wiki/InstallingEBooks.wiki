@@ -29,3 +29,12 @@ To do this, you must first have enabled SSH on your phone, or it won't work at a
   # If you have more than one file in a local directory, for instance a book broken into chapters, you can type {{{ scp -r /path/to/directory root@192.168.1.1:/var/root/Media/EBooks }}}
   # Enter your password and the book will be copied over!
 
+= Making your eBooks look nicer =
+
+Text files straight from [http://www.gutenberg.org Project Gutenberg] have a couple of problems for our purposes.  First of all, they're very long, which makes it difficult to jump to a certain chapter, and second of all, they kinda look really ugly on the iPhone's screen.
+
+Fortunately, there are several ways to fix this.  One of the easiest is to simply download the HTML version of a given text, if it's available.  For instance, [http://www.gutenberg.org/etext/768 Wuthering Heights] has a fine HTML version.  This does not solve the problem of long files, though.
+
+Instead, I strongly recommend grabbing a copy of [http://www.sandroid.org/GutenMark GutenMark] and compiling it on your machine.  You can use GutenMark on a plain text Gutenberg file, and then use the associated utility GutenSplit to split the HTML file into chapters.  It works very well (usually).  See [http://sandroid.org/GutenMark/usage.html GutenMark's documentation] for details.
+
+I intend to create a customized version of GutenSplit that will create HTML files tailored for the iPhone, and some time after that I will create a Mac OS X application that will both provide a front-end for GutenMark and also install eBooks on the iPhone automatically.
