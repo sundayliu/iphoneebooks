@@ -6,6 +6,12 @@
 Installing an application on the iPhone  is not a simple process.  If you don't know what "jailbreak" or "iPHUC" means, you should google those terms.  iFuntastic may also be helpful.
 
 
-= Details =
+= Jailbreaking your Phone =
 
-See [http://code.google.com/p/mobileterminal/wiki/Installation mobileterminal's install page] for information on how to install an application.  Be warned, it involves installing an SSH server on the iPhone.  Fortunately, [InstallingEBooks] is much easier.
+By default, you can only access certain directories on the iPhone, even through iPHUC (through iTunes, you can't access anything at all).  The following instructions are taken from the iPhone Dev Wiki (and at their request I am not linking directly to them).
+
+These instructions work with Mac OS X only.
+
+  # Get the Apple Firmware image, v. 1.0.  There are links on the iPhone Dev Wiki.  It is a zip file with the extension ".ipsw"; to decompress it, simply change the extension to ".zip" and double-click it.
+
+_more coming!  I need to leave but I will be back_
