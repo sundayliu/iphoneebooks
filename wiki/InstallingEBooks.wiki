@@ -8,7 +8,7 @@ This tutorial uses iPHUC to install eBooks into your Media/EBooks directory, whe
 This tutorial has been written for Mac OS X.
 
 
-= Details =
+== Copy books using iPHUC ==
 
   # Get and install [http://iphuc.googlecode.com/ iPHUC].
   # Plug in your iPhone to your computer.  If iTunes opens, let your phone sync and then quit iTunes.
@@ -19,4 +19,13 @@ This tutorial has been written for Mac OS X.
   # If you want a prettier name on the Books.app file browser, you could type {{{ putfile /Users/yourusername/some_book.txt Some\ Book,\ by\ Jane\ Author }}}.  Note you need to escape all spaces with backslashes.
   # If you have a directory which contains a book broken up into chapters, you need to create a new directory and copy over each file separately.  Pain in the neck, but I hope to have a tool to automate this soon.
 
-You can also use scp (secure copy) to copy over files.  That's beyond the scope of this document (for now).
+== Copy books using scp ==
+
+To do this, you must first have enabled SSH on your phone, or it won't work at all, and you must be connected to a Wi-Fi network.
+
+  # Find out your iPhone's IP address: Settings -> WiFi, then click the blue arrow to the right of your checked network.  The IP address will be listed on the next screen.  For the example we'll call it 192.168.1.1.
+  # Make sure you don't let your iPhone sleep in the next few steps!
+  # If you have one file, you can type: {{{ scp /path/to/file.html root@192.168.1.1:/var/root/Media/EBooks }}} (assuming you've already created the EBooks directory)
+  # If you have more than one file in a local directory, for instance a book broken into chapters, you can type {{{ scp -r /path/to/directory root@192.168.1.1:/var/root/Media/EBooks }}}
+  # Enter your password and the book will be copied over!
+
