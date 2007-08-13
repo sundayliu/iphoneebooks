@@ -1,4 +1,4 @@
-#summary List of things I want to implement.
+#summary List of things I want to implement, and things I never will.
 #labels Featured
 
 = Introduction =
@@ -6,7 +6,10 @@
 List of things I, roosterspice, want to do with the app.  If you'd like to add a feature, please feel free to do so and submit a patch!
 
 
-= Details =
+= Things I want to implement =
+As of 8/13/2007
+  * Inline HTML images don't work.  Should they?  I think so.  But this would require a major rethinking of the architecture, and will probably have to wait until Apple decides to open things up and document them.
+
 As of 8/12/2007
   * Allow deletion of books directly from the file browser.
   * Bookmarking?  Press a button to set a bookmark at the top of the page, click the bookmark to remove it.  Is this neccesary if persistence works?  Some sort of "Go to bookmark" functionality would also be needed as well, then.
@@ -18,3 +21,8 @@ As of 8/10/2007
   * Fix the FileBrowser so it shows only directories, .txt, and .htm(l) files.
   * Handle .txt files properly. -- *DONE.  Files need to be in UTF-8, Unix line breaks.*
   * Simplify the process of getting books copied to the phone via shell-script or full Cocoa app.  Integrate GutenMark on the server side.
+
+= Things that will never be implemented =
+
+  * Proprietary DRM'd eBooks, such as those sold by Mobipocket, eReader, etc.  Books.app is released under the GNU GPL, and as such its source code must be open.  If the commercial eBook publishers want to pay me a lot of money to code a different, closed-source reader from scratch, I'd be happy to do so.  But Books.app will always be free and open-source.  
+  * Downloading eBooks directly from the 'net, as opposed to the iTunes-esque download-to-computer-and-sync.  There are several reasons for this.  Most importantly, you can just read your books in Safari if you're connected to the Internet.  Secondly, don't forget that none of these iPhone hacks are supported by Apple, and the moment you update your iPhone software, all your books will vanish.  Therefore, it's _incredibly_ important to keep a local copy of all your books, so you can re-load them if needed!
