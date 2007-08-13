@@ -7,13 +7,14 @@ List of things I, roosterspice, want to do with the app.  If you'd like to add a
 
 
 = Details =
-
+As of 8/12/2007
+  * Allow deletion of books directly from the file browser.
   * Bookmarking?  Press a button to set a bookmark at the top of the page, click the bookmark to remove it.  Is this neccesary if persistence works?  Some sort of "Go to bookmark" functionality would also be needed as well, then.
   * Better filenames for chapters, via GutenSplit.
 
 As of 8/10/2007
   * Implement persistence, so the application picks up where you left off when you re-open it.
-  * Implement real-time text resizing, ideally via simple taps and double-taps. -- *Sorta works.  A two-finger tap increases the text size.*
+  * Implement real-time text resizing, ideally via simple taps and double-taps. -- *Sorta works.  A two-finger tap increases the text size.  No way to decrease the text size yet except closing and re-opening the app.*
   * Fix the FileBrowser so it shows only directories, .txt, and .htm(l) files.
   * Handle .txt files properly. -- *DONE.  Files need to be in UTF-8, Unix line breaks.*
   * Simplify the process of getting books copied to the phone via shell-script or full Cocoa app.  Integrate GutenMark on the server side.
