@@ -20,7 +20,7 @@ As of 8/10/2007
   * Implement real-time text resizing, ideally via simple taps and double-taps. -- *Sorta works.  A two-finger tap increases the text size.  No way to decrease the text size yet except closing and re-opening the app.*
   * Fix the FileBrowser so it shows only directories, .txt, and .htm(l) files.
   * Handle .txt files properly. -- *DONE.  Files need to be in UTF-8, Unix line breaks.*
-  * Simplify the process of getting books copied to the phone via shell-script or full Cocoa app.  Integrate GutenMark on the server side.
+  * Simplify the process of getting books copied to the phone via shell-script or full Cocoa app.  Integrate GutenMark on the server side. -- *A shell script, copybookdir.sh, is available via SVN in the trunk/scripts directory.*
 
 = Things that will never be implemented =
 
