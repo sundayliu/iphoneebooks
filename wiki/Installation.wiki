@@ -26,5 +26,4 @@ You need to install SSH on your iPhone so you can make your applications executa
   # Enter your password (and you changed it from the default, right?) and Books.app will be copied over.  Reboot your iPhone, and it will appear in the SpringBoard.
 
 = Using Installer.app =
-
-I'm trying to get Books.app registered in the beta third-party Installer, which can be found [http://iphone.nullriver.com/beta.html here].  If and when this happens, installation will be super-simple.
+Books.app is now included in the beta Installer.app package manager for the iPhone.  Thanks, guys!  You can now install the Installer with the procedures above, and install Books.app directly from there.  You should still download the copybookdir.sh script for installing books, however.
