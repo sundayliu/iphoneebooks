@@ -9,6 +9,7 @@ There is now available in the public SVN a bash shell-script which will copy a d
   # Change to the directory where you saved copybookdir.sh.
   # Type {{{ ./copybookdir.sh /path/to/directory }}} where /path/to/directory is the directory where your chapter files are stored.  Copybookdir.sh will create the EBooks directory (if needed) as well as the directory for the book, and then copy the files in the directory to the iPhone.
   # _Note well that there cannot be spaces in the directory name, nor in the names of the chapters._  This limitation will be fixed in a future release. (This is because iPHUC cannot handle filenames with spaces unless they are escaped with backslashes--quotes don't work.)
+  # _Note also that you must provide the full path, not a relative path, to the folder you're copying_ (although "~" and "~user" constructions do work).  This is because I am a bad scripter.  (Anyone know how to get full pathnames in Bash?)
 
 = Introduction =
 
