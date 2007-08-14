@@ -3,7 +3,7 @@
 
 = NEW! Use copybookdir.sh =
 
-There is now available in the public SVN a bash shell-script which will copy a directory containing an eBook to your iPhone.  (It will be part of the next binary release as well.)  Download the script (from the svn trunk/scripts directory) and place it somewhere in your path. Do _not_ install it to your iPhone.  You still need iPHUC installed, but after you've done that, just do the following:
+There is now available, included in the binary release, a bash shell-script which will copy a directory containing an eBook to your iPhone.  Download the script (from the svn trunk/scripts directory) and place it somewhere in your path. Do _not_ install it to your iPhone.  You still need iPHUC installed, but after you've done that, just do the following:
   # Plug in your iPhone.
   # Open a Terminal window.
   # Change to the directory where you saved copybookdir.sh.
