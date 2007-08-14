@@ -16,7 +16,7 @@ As of 8/12/2007
   * Better filenames for chapters, via GutenSplit.
 
 As of 8/10/2007
-  * Implement persistence, so the application picks up where you left off when you re-open it.
+  * Implement persistence, so the application picks up where you left off when you re-open it. -- *Beginnings.  Now remembers the last chapter you were in, but does not yet scroll to where you were.*
   * Implement real-time text resizing, ideally via simple taps and double-taps. -- *Sorta works.  A two-finger tap increases the text size.  No way to decrease the text size yet except closing and re-opening the app.*
   * Fix the FileBrowser so it shows only directories, .txt, and .htm(l) files.
   * Handle .txt files properly. -- *DONE.  Files need to be in UTF-8, Unix line breaks.*
