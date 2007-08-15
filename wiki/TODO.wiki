@@ -9,6 +9,7 @@ List of things I, roosterspice, want to do with the app.  If you'd like to add a
 = Things I want to implement =
 As of 8/15/2007
   * Forward/back buttons in the text view, to allow you to jump to the nearby chapters without going back to the chapter browser (thanks MarkC).
+  * Perhaps controls should disappear when you scroll, and reappear when you two-finger tap?  (Since a two-finger tap is the only event I can consistently make happen.)  This would be especially essential if I add a second navbar along the bottom.
 
 As of 8/13/2007
   * Inline HTML images don't work.  Should they?  I think so.  But this would require a major rethinking of the architecture, and will probably have to wait until Apple decides to open things up and document them.
@@ -19,7 +20,7 @@ As of 8/12/2007
   * Better filenames for chapters, via GutenSplit.
 
 As of 8/10/2007
-  * Implement persistence, so the application picks up where you left off when you re-open it. -- *Beginnings.  Now remembers the last chapter you were in, but does not yet scroll to where you were.*
+  * Implement persistence, so the application picks up where you left off when you re-open it. -- *WORKS!  Now in the public SVN; will be released in version 0.4.*
   * Implement real-time text resizing, ideally via simple taps and double-taps. -- *Sorta works.  A two-finger tap increases the text size.  No way to decrease the text size yet except closing and re-opening the app.*
   * Fix the FileBrowser so it shows only directories, .txt, and .htm(l) files. -- *DONE*
   * Handle .txt files properly. -- *DONE.  Files need to be in UTF-8, Unix line breaks.*
