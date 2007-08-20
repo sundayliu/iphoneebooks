@@ -1,4 +1,5 @@
 #summary Known problems with current versions of Books.app.
+#labels Featured
 
 = Introduction =
 
