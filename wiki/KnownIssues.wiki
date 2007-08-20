@@ -3,7 +3,7 @@
 
 = Introduction =
 
-I am aware of the following problems with Books.app.  If you have a new issue, *please do not leave it in the comments to this page--submit it via the Issues tab above!*
+I am aware of the following problems with Books.app.  If you have a new issue, *please do not leave it in the comments to this page--submit it via the Issues tab above!*  Or, even better, [http://code.google.com/p/iphoneebooks/source check out the source code] and try working on it yourself--that's what open source is all about!
 
 
 = Known Issues =
