@@ -1,4 +1,5 @@
 #summary How to remove Books.app's Preferences file.
+#labels Featured
 
 = Introduction =
 
