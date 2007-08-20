@@ -7,6 +7,9 @@ List of things I, roosterspice, want to do with the app.  If you'd like to add a
 
 
 = Things I want to implement =
+As of 8/20/2007
+  * Implement persistence _for every file you've read,_ not just the file you're currently reading; this will allow you to read multiple books simultaneously.
+
 As of 8/16/2007
   * Allow arbitrary folders, etc. in the EBooks folder, and have the FileBrowser handle them correctly.  (thanks Chadesh)
 
