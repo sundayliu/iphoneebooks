@@ -1,7 +1,13 @@
 #summary Installing Books.app on your iPhone.
 #labels Featured
 
-= Introduction =
+=READ THIS FIRST!=
+
+The wonderful people who made the Installer.app have also made a one-click solution for installing Installer itself on your iPhone.  (My head is spinning just thinking about that.)  [http://iphone.nullriver.com/beta/ Visiting their site is strongly encouraged], and Installer.app is the recommended way to install Books.app.  Just be sure to get the "Community Sources" package; Books.app's package is maintained by Ste.
+
+Of course, even though this is a lot easier now, all these third-party apps are not supported by Apple, so proceed with caution.
+
+= Old, crusty instructions =
 
 Installing an application on the iPhone  is not a simple process.  If you don't know what "jailbreak" or "iPHUC" means, you should google those terms.  iFuntastic may also be helpful.
 
