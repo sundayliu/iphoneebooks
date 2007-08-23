@@ -3,4 +3,4 @@
 
 = Change Log =
 
-Please see 
+Please see http://iphoneebooks.googlecode.com/svn/trunk/CHANGELOG for the recent changes.
