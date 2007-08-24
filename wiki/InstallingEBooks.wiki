@@ -1,25 +1,28 @@
 #summary How to copy EBooks to your iPhone so Books.app can read them.
 #labels Featured
 
-= NEW! Use copybookdir.sh =
+= Important! =
+Books.app looks for files in an EBooks directory, within the root user's Media directory.  If you don't put the books there (whether they're individual files, or chapters within a directory), Books.app will not see them.  Whatever tool you're using to copy books over (and there are many, apparently), be sure you've created the EBooks folder before you begin.
 
-There is now available, [http://iphoneebooks.googlecode.com/files/copybookdir.sh in the downloads section], a bash shell-script which will copy a directory containing an eBook to your iPhone.  Download the script (from the svn trunk/scripts directory) and place it somewhere in your path. Do _not_ install it to your iPhone.  You still need iPHUC installed, but after you've done that, just do the following:
+Also, make sure your extensions are correct.  Books.app can only read .txt, .htm, or .html files.
+
+== Easiest way: use copybookdir.sh ==
+
+There is now available, [http://iphoneebooks.googlecode.com/files/copybookdir.sh in the downloads section], a bash shell-script which will copy a directory containing an eBook to your iPhone.  It has some major limitations:
+  * _*It only copies one level of directories*_; it does not drill down into subdirectories.
+  * _*There cannot be spaces in the directory name, nor in the names of the book or the chapters.*_  (This is because iPHUC cannot handle filenames with spaces unless they are escaped with backslashes--quotes don't work.)  This may never be fixed because of the limitations of Mac OS X's `ls` command.  (Anyone whose bash-fu is stronger than mine, please feel free to help...)
+  * _*It copies everything it sees*_ (except invisible files), even if it's not a text or HTML file.
+
+Download the script (from the svn trunk/scripts directory, or the Featured link on the front page) and place it somewhere in your path. Do _not_ install it to your iPhone.  You still need iPHUC installed, but after you've done that, just do the following:
   # Plug in your iPhone.
   # Open a Terminal window.
   # Change to the directory where you saved copybookdir.sh.
   # Type {{{ ./copybookdir.sh /path/to/directory }}} where /path/to/directory is the directory where your chapter files are stored.  Copybookdir.sh will create the EBooks directory (if needed) as well as the directory for the book, and then copy the files in the directory to the iPhone.
-  # _*Note well that there cannot be spaces in the directory name, nor in the names of the book or the chapters.*_  This limitation will be fixed in a future release. (This is because iPHUC cannot handle filenames with spaces unless they are escaped with backslashes--quotes don't work.)
 
 Versions prior to Books.app 0.3 required you to type in the full pathname when invoking the script.  This has been fixed.
 
-= Introduction =
 
-This tutorial uses iPHUC to install eBooks into your Media/EBooks directory, where Books.app looks for them.  It is not neccesary to jailbreak your phone to do so--but of course, if you've installed Books.app your phone has already been jailbroken...
-
-This tutorial has been written for Mac OS X.
-
-
-== Copy books using iPHUC ==
+== Less easy way: copy books using iPHUC ==
 
   # Get and install [http://iphuc.googlecode.com/ iPHUC].
   # Plug in your iPhone to your computer.  If iTunes opens, let your phone sync and then quit iTunes.
@@ -28,7 +31,7 @@ This tutorial has been written for Mac OS X.
   # Type: {{{ cd EBooks  }}} to put yourself into the EBooks directory.
   # Assuming you have a text file in your home directory, you can copy it to the EBooks folder by typing {{{ putfile /Users/yourusername/some_book.txt some_book.txt }}} where "yourusername" is your user name.  Note that, at least at this point, iPHUC requires the full path to the file you're copying.
   # If you want a prettier name on the Books.app file browser, you could type {{{ putfile /Users/yourusername/some_book.txt Some\ Book,\ by\ Jane\ Author }}}.  Note you need to escape all spaces with backslashes.
-  # If you have a directory which contains a book broken up into chapters, you need to create a new directory and copy over each file separately.  Pain in the neck, but I hope to have a tool to automate this soon.
+  # If you have a directory which contains a book broken up into chapters, you need to create a new directory and copy over each file separately.  Alternately, you can use copybookdir.sh, above, or scp, below.
 
 == Copy books using scp ==
 
