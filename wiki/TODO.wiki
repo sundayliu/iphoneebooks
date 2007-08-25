@@ -14,7 +14,7 @@ As of 8/20/2007
   * Implement persistence _for every file you've read,_ not just the file you're currently reading; this will allow you to read multiple books simultaneously.
 
 As of 8/16/2007
-  * Allow arbitrary folders, etc. in the EBooks folder, and have the FileBrowser handle them correctly.  (thanks Chadesh)
+  * Allow arbitrary folders, etc. in the EBooks folder, and have the FileBrowser handle them correctly.  (thanks Chadesh)  -- *DONE as of 0.7.*
 
 As of 8/15/2007
   * Forward/back buttons in the text view, to allow you to jump to the nearby chapters without going back to the chapter browser (thanks MarkC).
