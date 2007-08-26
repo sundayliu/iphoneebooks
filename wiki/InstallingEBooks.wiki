@@ -21,6 +21,21 @@ Download the script (from the svn trunk/scripts directory, or the Featured link 
 
 Versions prior to Books.app 0.3 required you to type in the full pathname when invoking the script.  This has been fixed.
 
+== Another easy way: use Cyberduck ==
+Happy Books.app user Stephen writes:
+
+"Love it! I used to read books on my Handspring Visor Edge, then a Palm, but when I got a Palm Treo the screen was just too small, so I really like this. I had no luck installing books with the first two choices above, then after looking at the third my brother and I came up with the easiest way yet! Some steps will be the same, and you don't need to jailbreak the phone!  _Not *entirely* true--if you have the Installer.app installed, your phone is already jailbreaked (jailbroken?) even if the Installer did it itself. -- Zach_
+
+  # Use the Installer to install SSH 
+  # Find out your iPhone's IP address: Settings -> Wi-Fi, then click the blue arrow to the right of your checked network. The IP address will be listed on the next screen. Mine is 10.0.1.4 and my wife's is 10.0.1.5 . 
+  # Go to [http://www.macupdate.com/info.php/id/8392/cyberduck MacUpdate.com] and download the latest version of CyberDuck. Install as directed and launch. 
+  # Click "Open Connection," the top right button in the window. 
+  # In the "Protocol" drop-down select "SFTP." Leave the port field as 22. 
+  # In the "Server" field enter your iPhone's IP address. 
+  # In the "Username" field enter "root" and "dottie" in the password field (unless you changed the password of course). _WHICH YOU SHOULD! -- Zach_
+  # Bookmark the connection: Click the "Bookmarks" button, then the "+" sign at the bottom of the bookmarks tab that just slid out.
+
+This logs you into the root user folder. Now you you can make the "EBooks" folder in the Media folder and simply drag books and book folders from the Finder! You can also drag things out for a quick back up before upgrading to the next firmware."
 
 == Less easy way: copy books using iPHUC ==
 
