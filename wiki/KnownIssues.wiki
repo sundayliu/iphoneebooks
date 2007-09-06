@@ -8,6 +8,7 @@ I am aware of the following problems with Books.app.  If you have a new issue, *
 
 = Known Issues =
 
+  * Certain text encodings do not display non-ASCII character ranges properly.  For instance, a curly quote may be garbled if your text file is Mac OS Roman-encoded, and doesn't display at all under Windows Latin-1.  As a workaround, convert your files to UTF-8 or Unicode encoding, which always display properly.  A future version of Books.app will allow you to override the automatic text encoding.
   * Inline HTML images do not display.  While this is _not_ what we want to happen, it is a neccessary evil for the moment, due to problems with images which have "width" tags.
   * HTML files with "width" within their <div> tags may display incorrectly.  Sometimes changing the text size helps.
   * Opening large files, especially plain text, takes a long time.  Sometimes, in fact, it takes so long that if you're launching from the SpringBoard (the main iPhone view, with all the apps, etc.), the iPhone thinks Books.app has crashed, and automatically goes back to the SpringBoard.  If this happens, you will need to remove the Books.app preferences file, so that the program does not automatically open the file on launch.  See RemovingPreferencesFile.  It is strongly recommended that you break up long books into individual chapters.
