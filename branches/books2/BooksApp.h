@@ -1,0 +1,80 @@
+#import <CoreFoundation/CoreFoundation.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/CDStructures.h>
+#import <UIKit/UIWindow.h>
+#import <UIKit/UIView-Hierarchy.h>
+#import <UIKit/UIHardware.h>
+#import <UIKit/UIKit.h>
+#import <UIKit/UIApplication.h>
+#import <UIKit/UITextView.h>
+#import <UIKit/UIView.h>
+#import <UIKit/UIKeyboard.h>
+//#import <UIKit/UIWebView.h>
+#import <UIKit/UITransitionView.h>
+#import <UIKit/UINavigationItem.h>
+#import <UIKit/UINavBarButton.h>
+#import <UIKit/UIFontChooser.h>
+#import <UIKit/UIProgressHUD.h>
+#import "EBookView.h"
+#import "EBookImageView.h"
+#import "FileBrowser.h"
+#import "BooksDefaultsController.h"
+#import "HideableNavBar.h"
+#import "common.h"
+
+@class PreferencesController;
+
+@interface BooksApp : UIApplication {
+	UIWindow 	*window;
+	UIView      *mainView;
+	HideableNavBar  *navBar, *bottomNavBar;
+	UITransitionView *transitionView;
+        EBookView   *textView;
+	EBookImageView *imageView;
+	NSString    *path;
+	NSError     *error;
+	BOOL        bookHasChapters;
+	BOOL        readingText;
+	BOOL        doneLaunching;
+	BOOL        transitionHasBeenCalled;
+	BOOL        textViewNeedsFullText;
+	BOOL        navbarsAreOn;
+	BOOL		textInverted;
+	float       size;
+	BooksDefaultsController *defaults;
+	UINavBarButton *minusButton;
+	UINavBarButton *plusButton;
+	UINavBarButton *invertButton;
+	UINavBarButton *prefsButton;
+	UINavBarButton *downButton;
+	UINavBarButton *upButton;
+	UINavBarButton *rightButton;
+	UINavBarButton *leftButton;
+	
+	UIProgressHUD *progressHUD;
+
+	UIImage *buttonImg;
+	NSString *imgPath;
+}
+
+
+- (void)heartbeatCallback:(id)unused;
+- (void)hideNavbars;
+- (void)toggleNavbars;
+- (void)embiggenText:(UINavBarButton *)button;
+- (void)ensmallenText:(UINavBarButton *)button;
+- (void)invertText:(UINavBarButton *)button;
+- (void)setTextInverted:(BOOL)b;
+- (void)setupNavbar;
+- (void)setupToolbar;
+- (void)updateToolbar:(NSNotification *)notification;
+- (UINavBarButton *)toolbarButtonWithName:(NSString *)name rect:(struct CGRect)rect selector:(SEL)selector flipped:(BOOL)flipped;
+- (UIImage *)navBarImage:(NSString *)name flipped:(BOOL)flipped;
+- (void)textViewDidGoAway:(id)sender;
+- (void)showPrefs:(UINavBarButton *)button;
+- (UIWindow *)appsMainWindow;
+- (void)refreshTextViewFromDefaults;
+- (void)refreshTextViewFromDefaultsToolbarsOnly:(BOOL)toolbarsOnly;
+- (void)toggleStatusBarColor;
+- (NSString *)currentBrowserPath;
+@end

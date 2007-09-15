@@ -1,0 +1,32 @@
+Books.app is released under the GNU GPL.
+
+For more information on installing Books.app, and installing eBooks themselves,
+visit http://iphoneebooks.googlecode.com/.
+
+The package should contain:
+
+This README file
+The Books.app application
+The copybookdir.sh script
+
+Books.app should be copied to the /Applications directory on your
+iPhone using scp.  For details, see the above website, in the
+Installation wiki page.
+
+The copybookdir.sh script is a Bash script to automate copying folders
+containing eBook chapters to the place where Books.app looks for
+them.  Install iPHUC, plug in your iPhone, and run:
+
+./copybookdir /path/to/ebook/folder
+
+It currently has many problems, only a few of which are:
+
+- Nothing in the path can have spaces.
+
+Anyone who is a better Bash guru than me, please, please help!
+
+Eventually the script will be replaced by a full Cocoa app for Mac OS
+X.  I don't program Windows or Linux, but I welcome contributors.
+
+Zach Brewster-Geisz
+Aug. 2007
