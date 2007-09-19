@@ -1,27 +1,30 @@
 CC=arm-apple-darwin-cc
+CFLAGS=-O3
 LD=$(CC)
-LDFLAGS=-lobjc -framework CoreFoundation -framework Foundation -framework UIKit -framework LayerKit -framework CoreGraphics -framework GraphicsServices
+LDFLAGS=-L$(HEAVENLY)/usr/lib -lz -lobjc -framework CoreFoundation -framework Foundation -framework UIKit -framework LayerKit -framework CoreGraphics -framework GraphicsServices
 
 all:    Books
 
 Books:  mainapp.o BooksApp.o EBookView.o FileBrowser.o FileTable.o \
 	BooksDefaultsController.o HideableNavBar.o PreferencesController.o \
-	EncodingPrefsController.o NSString-BooksAppAdditions.o EBookImageView.o
+	EncodingPrefsController.o NSString-BooksAppAdditions.o EBookImageView.o \
+	palm/unpluck.o palm/palmconvert.o palm/util.o palm/config.o palm/pluckhtml.o \
+	palm/txt2pdbdoc.o libjpeg.a
 	$(LD) $(LDFLAGS) -v -o $@ $^
 
 %.o:    %.m 
-		$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 %.m:    %.h
 
-
 clean:
-		rm -rf *.o *~ Books Books.app
+	rm -rf *.o *~ Books Books.app plucker/*.o plucker/pluckertest
 
 package: Books
 	rm -fr Books.app
 	mkdir -p Books.app
 	cp Books Books.app/Books
+	strip Books.app/Books
 	cp Info.plist Books.app/Info.plist
 	cp icon.png Books.app/icon.png
 	cp Default.png Books.app/Default.png
