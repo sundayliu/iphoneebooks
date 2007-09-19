@@ -157,12 +157,18 @@
         theHTML = [ret retain];
       }
     }
-
+  else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"pdf"])
+    { // PDF damn it!
+      // Okay, you asked for it, damn it. They ain't payin' me enough for this
+      [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]];
+      return;
+    }
+ 
   if ((-1 == numChars) || (numChars >= [theHTML length]))
     {
       *didLoadAll = YES;
       [self setHTML:theHTML];
-      /*
+      /*  The following is experimental and should not compile
       if (nil != path)
 	{
 	  NSString *coverPath = [[path stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"cover.jpg"];
