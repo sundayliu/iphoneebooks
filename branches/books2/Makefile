@@ -24,7 +24,6 @@ package: Books
 	rm -fr Books.app
 	mkdir -p Books.app
 	cp Books Books.app/Books
-	strip Books.app/Books
 	cp Info.plist Books.app/Info.plist
 	cp icon.png Books.app/icon.png
 	cp Default.png Books.app/Default.png
