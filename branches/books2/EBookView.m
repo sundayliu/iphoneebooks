@@ -341,13 +341,8 @@
 */
 - (void)mouseUp:(struct __GSEvent *)event
 {
-  /*************
-   * NOTE: THE GSEVENTGETLOCATIONINWINDOW INVOCATION
-   * WILL NOT COMPILE UNLESS YOU HAVE PATCHED GRAPHICSSERVICES.H TO ALLOW IT!
-   * A patch is included in the svn.
-  *****************/
 
-  struct CGRect clicked = GSEventGetLocationInWindow(event);
+  struct CGPoint clicked = GSEventGetLocationInWindow(event);
   struct CGRect newRect = [self visibleRect];
   struct CGRect topTapRect = CGRectMake(0, 0, 320, 48);
   struct CGRect contentRect = [UIHardware fullScreenApplicationContentRect];
@@ -357,12 +352,12 @@
       BooksDefaultsController *defaults = [[BooksDefaultsController alloc] init];
       if (CGRectEqualToRect(lastVisibleRect, newRect))
 	{
-	  if (CGRectContainsPoint(topTapRect, clicked.origin))
+	  if (CGRectContainsPoint(topTapRect, clicked))
 	    {
 	      //scroll back one screen...
 	      [self pageUpWithTopBar:NO bottomBar:![defaults toolbar]];
 	    }
-	  else if (CGRectContainsPoint(botTapRect,clicked.origin))
+	  else if (CGRectContainsPoint(botTapRect, clicked))
 	    {
 	      //scroll forward one screen...
 	      [self pageDownWithTopBar:![defaults navbar] bottomBar:NO];
