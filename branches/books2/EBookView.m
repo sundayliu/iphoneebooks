@@ -55,6 +55,7 @@
   [self setTapDelegate:self];
   [self setScrollerIndicatorsPinToContent:NO];
   lastVisibleRect = [self visibleRect];
+  [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
   return self;
 }
 
@@ -143,7 +144,13 @@
   else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"html"] ||
 	   [[[thePath pathExtension] lowercaseString] isEqualToString:@"htm"])
     {
-      theHTML = [self HTMLFileWithoutImages:thePath];
+      [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]]; 
+      struct CGRect rect = [[self _webView] frame];
+      [[self _webView] setFrame:CGRectMake(0,0, 320, rect.size.height)];
+      [self setContentSize:CGSizeMake(320, rect.size.height)];
+      [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
+      *didLoadAll = YES;
+      return;
     }
   else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"pdb"]) 
     { 
@@ -161,6 +168,11 @@
     { // PDF damn it!
       // Okay, you asked for it, damn it. They ain't payin' me enough for this
       [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]];
+      //And it still don't work!
+      struct CGRect rect = [[self _webView] frame];
+      [[self _webView] setFrame:CGRectMake(0,0, 320, rect.size.height)];
+      [self setContentSize:CGSizeMake(320, rect.size.height)];
+      *didLoadAll = YES;
       return;
     }
  
@@ -187,11 +199,8 @@
 			       [theHTML HTMLsubstringToIndex:numChars didLoadAll:didLoadAll]];
       [self setHTML:tempyString];
     }
-  /*  [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]]; 
-  struct CGRect rect = [[self _webView] frame];
-  [[self _webView] setFrame:CGRectMake(0,0, 320, rect.size.height)];
-  [self setContentSize:CGSizeMake(320, rect.size.height)];
-  */
+
+
 }
 
 - (NSString *)HTMLFileWithoutImages:(NSString *)thePath
@@ -306,6 +315,7 @@
       [self loadBookWithPath:path];
       [self scrollPointVisibleAtTopLeft:oldRect.origin animated:YES];
       [self setNeedsDisplay];
+      [[[self _webView] webView] makeTextLarger:self];
     }
 }
 
@@ -324,6 +334,7 @@
       [self loadBookWithPath:path]; // This is horribly slow!  Is there a better way?
       [self scrollPointVisibleAtTopLeft:oldRect.origin animated:YES];
       [self setNeedsDisplay];
+      [[[self _webView] webView] makeTextSmaller:self];
     }
 }
 // None of these tap methods work yet.  They may never work.
