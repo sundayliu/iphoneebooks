@@ -297,30 +297,32 @@ int numberCompare(id firstString, id secondString, void *context)
   BOOL isDir = NO;
   DeletableCell *theCell = (DeletableCell *)[aNotification object];
   NSString *path = [theCell path];
-  NSLog(@"Cell path: %@", path);
+  //NSLog(@"Cell path: %@", path);
   if ([_files containsObject:[path lastPathComponent]])
     //FIXME:This could cause side effects in the rare case where a
     //FileBrowser contains cells with the same name!!!!
     {
-      NSLog(@"_files contains %@", [path lastPathComponent]);
+      //NSLog(@"_files contains %@", [path lastPathComponent]);
       if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir] && isDir)
 	{
 	  [defaults removeScrollPointsForDirectory:path];
 	}
       else
 	[defaults removeScrollPointForFile:path];
-      NSLog(@"_files before: %@", _files);
+      //NSLog(@"_files before: %@", _files);
       BOOL success = [[NSFileManager defaultManager] removeFileAtPath:path handler:nil];
       if (success)
 	{
 	  [_files removeObject:[path lastPathComponent]];
 	  _rowCount--;
 	  [_table reloadData]; //erg...
-	  NSLog(@"_files after: %@", _files);
+	  //NSLog(@"_files after: %@", _files);
 	}
     }
   else
-    NSLog(@"_files does not contain %@", [path lastPathComponent]);
+  {
+    //NSLog(@"_files does not contain %@", [path lastPathComponent]);
+  }
 }
 
 @end

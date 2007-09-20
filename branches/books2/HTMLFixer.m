@@ -45,10 +45,16 @@
                 {
                     NSString *imgString = [[theHTML substringWithRange:NSMakeRange(c+1, 3)]
                         lowercaseString];
-                    if ([imgString isEqualToString:@"img")
+                    if ([imgString isEqualToString:@"img"])
                         {
-                            c += 4;
-                            [theHTML insertString:@" width=\"300\" " atIndex:c];
+                            unsigned int d = c++;
+                            while ((c < len) && ([theHTML characterAtIndex:c] != (unichar)'>'))
+                                c++;
+                            NSRange aRange = NSMakeRange(d, (c - d));
+                            NSString *imageTagString = [theHTML substringWithRange: aRange];
+                            [theHTML replaceCharactersInRange:aRange
+                                 withString:[HTMLFixer fixedImageTagForString:imageTagString
+                                                        basePath:[thePath stringByDeletingLastPathComponent]]];
                             len = [theHTML length];
                         }
                 }
@@ -63,5 +69,101 @@
     return ret;
 }
 
++(NSString *)fixedImageTagForString:(NSString *)aStr basePath:(NSString *)path
+// Returns an image tag for which the image has been shrunk to 300 pixels wide.
+// Does nothing if the image is already under 300 px wide.
+// Assumes a local URL as the "src" element.
+{
+    NSMutableString *str = [NSMutableString stringWithString:aStr];
+    unsigned int len = [str length];
+    NSRange range;
+    NSString *tempString;
+    unsigned int c = 0;
+    unsigned int d = 0;
+    unsigned int width = 300;
+    unsigned int height = 0;
+    NSString *srcString = nil;
+    
+    // First step, find the "src" string.
+    while (c + 5 < len)
+        {
+            range = NSMakeRange(c++, 5);
+            tempString = [[str substringWithRange:range] lowercaseString];
+            if ([tempString isEqualToString:@"src=\""])
+                {
+                    c += 4;
+                    d = c;
+                    while ((c < len) && ([str characterAtIndex:c] != (unichar)'"'))
+                        ++c;
+                    NSRange anotherRange = NSMakeRange(d, (c-d));
+                    srcString = [str substringWithRange:anotherRange];
+                    //With any luck, this will be the file name.
+                    break;
+                }
+        }
+    if (srcString == nil)
+        return [aStr copy];
+    NSString *imgPath = [[path stringByAppendingPathComponent:srcString] stringByStandardizingPath];
+    UIImage *img = [UIImage imageAtPath:imgPath];
+    if (nil != img)
+        {
+            CGImageRef imgRef = [img imageRef];
+            width = CGImageGetWidth(imgRef);
+            if (width <= 300)
+                return [aStr copy];
+            height = CGImageGetHeight(imgRef);
+            float aspectRatio = (float)height / (float)width;
+            width = 300;
+            height = (unsigned int)(300.0 * aspectRatio);
+        }
+    // Now, find if there's a "height" tag.
+    c = 0;
+    while (c + 8 < len)
+        {
+            range = NSMakeRange(c++, 8);
+            tempString = [[str substringWithRange:range] lowercaseString];
+            if ([tempString isEqualToString:@"height=\""])
+                {
+                    c +=7;
+                    d = c;
+                    while ((c < len) && ([str characterAtIndex:c] != (unichar)'"'))
+                        c++;
+                    NSRange anotherRange = NSMakeRange(d, (c - d));
+                    NSString *heightNumString = [NSString stringWithFormat:@"%d", (int)height];
+                    [str replaceCharactersInRange:anotherRange withString:heightNumString];
+                    len = [str length];
+                    break;
+                }
+        }
+    // If there's no height tag, we don't need to worry about inserting one.
+    // Now, to find the width tag.
+    c = 0;
+    BOOL foundWidth = NO;
+    while (c + 7 < len)
+        {
+            range = NSMakeRange(c++, 7);
+            tempString = [[str substringWithRange:range] lowercaseString];
+            if ([tempString isEqualToString:@"width=\""])
+                {
+                    foundWidth = YES;
+                    c +=6;
+                    d = c;
+                    while ((c < len) && ([str characterAtIndex:c] != (unichar)'"'))
+                        c++;
+                    NSRange anotherRange = NSMakeRange(d, (c - d));
+                    NSString *widthNumString = [NSString stringWithFormat:@"%d", (int)width];
+                    [str replaceCharactersInRange:anotherRange withString:widthNumString];
+                    len = [str length];
+                    break;
+                }
+        }
+    if (!foundWidth)
+    // There was no width tag, so let's just insert one.
+        {
+            NSString *widthString = [NSString stringWithFormat:@" width=\"%d\" ", (int)width];
+            [str insertString:widthString atIndex:4];
+        }
+    return [NSString stringWithString:str];
+}
 
 @end

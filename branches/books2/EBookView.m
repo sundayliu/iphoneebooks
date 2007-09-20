@@ -17,7 +17,6 @@
 */
 #import <CoreGraphics/CoreGraphics.h>
 #import <GraphicsServices/GraphicsServices.h>
-//#import <UIKit/UIWebView.h>
 #import "EBookView.h"
 #import "BooksDefaultsController.h"
 #import "palm/palmconvert.h"
@@ -144,11 +143,13 @@
   else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"html"] ||
 	   [[[thePath pathExtension] lowercaseString] isEqualToString:@"htm"])
     {
+    	if (![HTMLFixer fileHasBeenFixedAtPath:thePath])
+    		[HTMLFixer writeFixedFileAtPath:thePath];
       [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]]; 
+      [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
       struct CGRect rect = [[self _webView] frame];
       [[self _webView] setFrame:CGRectMake(0,0, 320, rect.size.height)];
       [self setContentSize:CGSizeMake(320, rect.size.height)];
-      [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
       *didLoadAll = YES;
       return;
     }
