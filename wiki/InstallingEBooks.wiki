@@ -14,8 +14,8 @@ There is now available, [http://iphoneebooks.googlecode.com/files/copybookdir.sh
 
 Download the script (from the svn trunk/scripts directory, or the Featured link on the front page) and place it somewhere in your path. Do _not_ install it to your iPhone.  You still need iPHUC installed, but after you've done that, just do the following:
   # Plug in your iPhone.
-  # Open a Terminal window.
-  # Change to the directory where you saved copybookdir.sh.
+  # Open a Terminal window (/Applications/Utilities/Terminal.app on your Mac).
+  # Change to the directory where you saved copybookdir.sh.  (Type, for instance, `cd Desktop` if it was saved to the Desktop.)
   # Type {{{ ./copybookdir.sh /path/to/directory }}} where /path/to/directory is the directory where your chapter files are stored.  Copybookdir.sh will create the EBooks directory (if needed) as well as the directory for the book, and then copy the files in the directory to the iPhone.
 
 Versions prior to Books.app 0.3 required you to type in the full pathname when invoking the script.  This has been fixed.  Versions prior to Books.app 0.9 did not allow folders or files with spaces in the name.  This was fixed by Aaron Davies.
@@ -66,3 +66,4 @@ Fortunately, there are several ways to fix this.  One of the easiest is to simpl
 Instead, I strongly recommend grabbing a copy of [http://www.sandroid.org/GutenMark GutenMark] and compiling it on your machine.  You can use GutenMark on a plain text Gutenberg file, and then use the associated utility GutenSplit to split the HTML file into chapters.  It works very well (usually).  See [http://sandroid.org/GutenMark/usage.html GutenMark's documentation] for details.
 
 I intend to create a customized version of GutenSplit that will create HTML files tailored for the iPhone, and some time after that I will create a Mac OS X application that will both provide a front-end for GutenMark and also install eBooks on the iPhone automatically.
+ 
