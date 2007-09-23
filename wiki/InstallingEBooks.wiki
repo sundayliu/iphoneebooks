@@ -67,3 +67,4 @@ Instead, I strongly recommend grabbing a copy of [http://www.sandroid.org/GutenM
 
 I intend to create a customized version of GutenSplit that will create HTML files tailored for the iPhone, and some time after that I will create a Mac OS X application that will both provide a front-end for GutenMark and also install eBooks on the iPhone automatically.
  
+ 
