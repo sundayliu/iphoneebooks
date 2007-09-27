@@ -7,16 +7,14 @@ As of Books 1.1, support for some PalmOS .pdb files is present.  Unfortunately n
 
 This list started from formats listed here: http://www.handebooks.com/formats/palmformats.html
 
-Books.app attempts to open all *.pdb files, but then checks for a signature string in the file which indicates the file's type.  If an unsupported format is detected, an error message mentioning "unknown PDB magic" will be displayed when the book is opened.  If any magic strings are found that aren't listed below, please add them to this page along with as much information as possible about the program that created the file.
+Books.app attempts to open all .pdb files, but then checks for a signature string in the file which indicates the file's type.  If an unsupported format is detected, an error message mentioning "unknown PDB magic" will be displayed when the book is opened.  If any magic strings are found that aren't listed below, please add them to this page along with as much information as possible about the program that created the file.
 
 == Known Palm PDB Document Formats ==
 
  * TEXtREAd - Standard PalmDOC -- supported in 1.1
- * !DataPlkr - Plucker (http://www.plkr.org/) -- partial support in 1.1 - no links or
-graphics yet
+ * !DataPlkr - Plucker (http://www.plkr.org/) -- partial support in 1.1 - no links or graphics yet
  * !ToGoToGo - iSilo (http://www.isilo.com/) -- closed source format, no docs available
- * PNRdPPrs - PalmReader/PeanutPress/eReader (http://www.ereader.com/) -- closed
-source format, usually with DRM, no docs available
+ * PNRdPPrs - PalmReader/PeanutPress/eReader (http://www.ereader.com/) -- closed source format, usually with DRM, no docs available
  * !MobiPock - Mobi Pocker
  * TEXtTIDc - TealDoc
  * ToRaTRPW - Tome Rader
