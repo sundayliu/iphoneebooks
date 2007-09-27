@@ -33,9 +33,40 @@
     NSMutableString *theHTML = [[NSMutableString alloc] initWithContentsOfFile:thePath
                                             encoding:NSUTF8StringEncoding
                                             error:NULL];
-    // FIXME:allow for other encodings
     BOOL ret;
+/*  if (nil == theHTML)
+    {
+      NSLog(@"Trying UTF-8 encoding...");
+      theHTML = [[NSMutableString alloc]
+               initWithContentsOfFile:thePath
+               encoding: NSUTF8StringEncoding
+               error:NULL];
+    }
+*/    if (nil == theHTML)
+    {
+      NSLog(@"Trying ISO Latin-1 encoding...");
+      theHTML = [[NSMutableString alloc]
+               initWithContentsOfFile:thePath
+               encoding: NSISOLatin1StringEncoding
+               error:NULL];
+    }
     if (nil == theHTML)
+    {
+      NSLog(@"Trying Mac OS Roman encoding...");
+      theHTML = [[NSMutableString alloc]
+               initWithContentsOfFile:thePath
+               encoding: NSMacOSRomanStringEncoding
+               error:NULL];
+    }
+    if (nil == theHTML)
+    {
+      NSLog(@"Trying ASCII encoding...");
+      theHTML = [[NSMutableString alloc] 
+               initWithContentsOfFile:thePath
+               encoding: NSASCIIStringEncoding
+               error:NULL];
+    }
+    if (nil == theHTML)  // Give up.  The webView will still display it.
         return NO;
     unsigned int c = 0;
     unsigned int len = [theHTML length];

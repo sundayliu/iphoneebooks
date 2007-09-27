@@ -265,6 +265,18 @@
   NSLog(@"end.\n");
 }
 
+- (void) applicationWillTerminate
+{
+  struct CGRect selectionRect;
+  [defaults setFileBeingRead:[textView currentPath]];
+  selectionRect = [textView visibleRect];
+  [defaults setLastScrollPoint:(unsigned int)selectionRect.origin.y
+	    forFile:[textView currentPath]];
+  [defaults setReadingText:readingText];
+  [defaults setLastBrowserPath:[navBar topBrowserPath]];
+  [defaults synchronize];
+}
+
 - (void) applicationWillSuspend
 {
   struct CGRect selectionRect;
