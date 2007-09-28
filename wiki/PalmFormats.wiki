@@ -1,5 +1,5 @@
+#summary Information on PalmOS document file formats
 #labels Phase-Requirements
-#Information on PalmOS document file formats
 
 = Introduction =
 
