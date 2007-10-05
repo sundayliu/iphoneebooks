@@ -3,24 +3,28 @@
 /* Sent to all browsers except IE3 */
 
 BODY {
-	font-family: Helvetica !important;
+	font-family: Georgia !important;
 	margin-top: 0;
 	margin-bottom: 0;
-	margin-left: 2%;
-	margin-right: 2%;
+	margin-left: 2% !important;
+	margin-right: 2% !important;
 	padding: 0;
-	font-size: 12pt;
+	font-size: 10pt !important;
 	line-height: 1.2;	
-	color: black !important;
-	background: white !important;
+	color: white !important;
+	background: black !important;
 }
 
+
 SPAN {
-	font-family: Helvetica !important;
-	font-size:12pt;
+}
+
+p {
+}
+
+div {
 }
 
 PRE {
-	white-space:pre;
 	}
 

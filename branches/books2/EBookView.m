@@ -19,6 +19,7 @@
 #import <GraphicsServices/GraphicsServices.h>
 #import "EBookView.h"
 #import "BooksDefaultsController.h"
+#import "CSSController.h"
 #import "palm/palmconvert.h"
 
 @interface NSObject (HeartbeatDelegate)
@@ -34,7 +35,8 @@
 {
   [super initWithFrame:rect];
   //  tapinfo = [[UIViewTapInfo alloc] initWithDelegate:self view:self];
-
+  //theWebView = [[UIWebView alloc] initWithFrame:rect];
+  //internalTextView = [[UITextView alloc] initWithFrame:rect webView:theWebView];
   size = 16.0f;
 
   path = @"";
@@ -47,17 +49,27 @@
   [self setAllowsRubberBanding:YES];
   [self setBottomBufferHeight:0.0f];
 
-  [self scrollToMakeCaretVisible:NO];
+  //[self scrollToMakeCaretVisible:NO];
 
-  [self setScrollDecelerationFactor:0.995f];
+  [self setScrollDecelerationFactor:0.996f];
   //  NSLog(@"scroll deceleration:%f\n", self->_scrollDecelerationFactor);
   [self setTapDelegate:self];
   [self setScrollerIndicatorsPinToContent:NO];
   lastVisibleRect = [self visibleRect];
+  CSSController *css = [[CSSController alloc] init];
+  [css writeUserCSSBasedOnDefaults];
   [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
+  [css release];
+
   return self;
 }
-
+/*
+- (struct CGRect)visibleRect
+{
+  struct CGPoint pt = [self _pinnedScrollPointForPoint:CGPointMake(0,0)];
+  return CGRectMake(pt.x, pt.y, 320,460);
+}
+*/
 - (void)heartbeatCallback:(id)unused
 {
   if ((![self isScrolling]) && (![self isDecelerating]))
@@ -140,7 +152,8 @@
     {
       theHTML = [self HTMLFromTextFile:thePath];
     }
-  else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"html"] ||
+  else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"html"] 
+	   ||
 	   [[[thePath pathExtension] lowercaseString] isEqualToString:@"htm"])
     {
     	if (![HTMLFixer fileHasBeenFixedAtPath:thePath])
@@ -148,9 +161,13 @@
       [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]]; 
       [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
       struct CGRect rect = [[self _webView] frame];
-      [[self _webView] setFrame:CGRectMake(0,0, 320, rect.size.height)];
-      [self setContentSize:CGSizeMake(320, rect.size.height)];
-      *didLoadAll = YES;
+      NSLog(@"rect h: %f w: %f", rect.size.height, rect.size.width);
+      if (rect.size.height != 320)
+	{
+	  [[self _webView] setFrame:CGRectMake(0,0, 320, rect.size.height)];
+	  [self setContentSize:CGSizeMake(320, rect.size.height)];
+	}
+      *didLoadAll = NO;  //FIXME?
       return;
     }
   else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"pdb"]) 
@@ -165,7 +182,7 @@
         theHTML = [ret retain];
       }
     }
-  else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"pdf"])
+  /*  else if ([[[thePath pathExtension] lowercaseString] isEqualToString:@"pdf"])
     { // PDF damn it!
       // Okay, you asked for it, damn it. They ain't payin' me enough for this
       [[self _webView] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:thePath]]];
@@ -176,23 +193,11 @@
       *didLoadAll = YES;
       return;
     }
- 
+  */
   if ((-1 == numChars) || (numChars >= [theHTML length]))
     {
       *didLoadAll = YES;
       [self setHTML:theHTML];
-      /*  The following is experimental and should not compile
-      if (nil != path)
-	{
-	  NSString *coverPath = [[path stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"cover.jpg"];
-	  UIImage *img = [UIImage imageAtPath:coverPath];
-	  if (nil != img)
-	    {
-	      UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-	      [self addSubview:imgView]; //FIXME memory leek!
-	    }
-	}
-      */
     }
   else
     {
@@ -200,8 +205,6 @@
 			       [theHTML HTMLsubstringToIndex:numChars didLoadAll:didLoadAll]];
       [self setHTML:tempyString];
     }
-
-
 }
 
 - (NSString *)HTMLFileWithoutImages:(NSString *)thePath
@@ -312,11 +315,18 @@
       middleRect *= scrollFactor;
       oldRect.origin.y = middleRect - (oldRect.size.height / 2);
       NSLog(@"size: %f y: %f\n", size, oldRect.origin.y);
+      BooksDefaultsController *defaults = [[BooksDefaultsController alloc] init];
+      CSSController *css = [[CSSController alloc] init];
+      [defaults setTextSize:size];
+      [css writeUserCSSBasedOnDefaults];
+      [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
       [self setTextSize:size];
       [self loadBookWithPath:path];
       [self scrollPointVisibleAtTopLeft:oldRect.origin animated:YES];
       [self setNeedsDisplay];
-      [[[self _webView] webView] makeTextLarger:self];
+      [css release];
+      [defaults release];
+      //      [[[self _webView] webView] makeTextLarger:self];
     }
 }
 
@@ -331,11 +341,18 @@
       size -= 2.0f;
       middleRect *= scrollFactor;
       oldRect.origin.y = middleRect - (oldRect.size.height / 2);
+      BooksDefaultsController *defaults = [[BooksDefaultsController alloc] init];
+      CSSController *css = [[CSSController alloc] init];
+      [defaults setTextSize:size];
+      [css writeUserCSSBasedOnDefaults];
+      [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
       [self setTextSize:size];
-      [self loadBookWithPath:path]; // This is horribly slow!  Is there a better way?
+      [self loadBookWithPath:path];
       [self scrollPointVisibleAtTopLeft:oldRect.origin animated:YES];
       [self setNeedsDisplay];
-      [[[self _webView] webView] makeTextSmaller:self];
+      [css release];
+      [defaults release];
+      //[[[self _webView] webView] makeTextSmaller:self];
     }
 }
 // None of these tap methods work yet.  They may never work.
@@ -599,14 +616,14 @@
       float textParts[4] = {1, 1, 1, 1};
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       [self setBackgroundColor: CGColorCreate( colorSpace, backParts)];
-      [self setTextColor: CGColorCreate( colorSpace, textParts)];
+      //[self setTextColor: CGColorCreate( colorSpace, textParts)];
       [self setScrollerIndicatorStyle:2];
     } else {
       float backParts[4] = {1, 1, 1, 1};
       float textParts[4] = {0, 0, 0, 1};
       CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
       [self setBackgroundColor: CGColorCreate( colorSpace, backParts)];
-      [self setTextColor: CGColorCreate( colorSpace, textParts)];
+      //[self setTextColor: CGColorCreate( colorSpace, textParts)];
       [self setScrollerIndicatorStyle:0];
     }
   // This "loadBookWithPath" invocation is a kludge;
@@ -614,6 +631,10 @@
   // without it, and we can't yet figure out how to fix it.
   struct CGRect oldRect = [self visibleRect];
   [self loadBookWithPath:path];
+  CSSController *css = [[CSSController alloc] init];
+  [css writeUserCSSBasedOnDefaults];
+  [[self _webView] setUserStyleSheetLocation:[NSURL fileURLWithPath:@"/var/root/Media/EBooks/style.css"]];
+  [css release];
   [self scrollPointVisibleAtTopLeft:oldRect.origin];
   [self setNeedsDisplay];
 }

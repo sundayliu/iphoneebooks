@@ -69,6 +69,127 @@
     }
     if (nil == theHTML)  // Give up.  The webView will still display it.
         return NO;
+    NSMutableString *newHTML = [NSMutableString stringWithString:[HTMLFixer fixedHTMLStringForString:theHTML filePath:thePath]];
+    NSString *temp = [NSString stringWithFormat:@"<!--BooksApp modified %@ -->\n",
+                        [NSCalendarDate calendarDate]];
+    [newHTML insertString:temp atIndex:0];
+    ret = [newHTML writeToFile:thePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+    [theHTML release];
+    return ret;
+}
+
++(NSString *)fixedImageTagForString:(NSString *)aStr basePath:(NSString *)path returnImageHeight:(int *)returnHeight
+// Returns an image tag for which the image has been shrunk to 300 pixels wide.
+// Changes the local file URL to an absolute URL since that's what the
+// UITextView seems to like.
+// Does nothing if the image is already under 300 px wide.
+// Assumes a local URL as the "src" element.
+{
+    NSMutableString *str = [NSMutableString stringWithString:aStr];
+    unsigned int len = [str length];
+    NSRange range;
+    NSString *tempString;
+    unsigned int c = 0;
+    unsigned int d = 0;
+    unsigned int width = 300;
+    unsigned int height = 0;
+    NSString *srcString = nil;
+    NSRange pathRange;
+    // First step, find the "src" string.
+    while (c + 4 < len)
+        {
+            range = NSMakeRange(c++, 4);
+            tempString = [[str substringWithRange:range] lowercaseString];
+            if ([tempString isEqualToString:@"src="])
+                {
+                    pathRange = [str quotedRangePastIndex:c];
+		    if (pathRange.location == NSNotFound)
+		      srcString = nil;
+		    else
+		      srcString = [str substringWithRange:pathRange];
+		    //NSLog(@"srcString: %@", srcString);
+                    //With any luck, this will be the file name.
+                    break;
+                }
+        }
+    if (srcString == nil)
+        return [aStr copy];
+    NSString *imgPath = [[path stringByAppendingPathComponent:srcString] stringByStandardizingPath];
+    NSURL *pathURL = [NSURL fileURLWithPath:imgPath];
+    NSString *absoluteURLString = [pathURL absoluteString];
+    //NSLog(@"absoluteURLString: %@", absoluteURLString);
+    [str replaceCharactersInRange:pathRange withString:absoluteURLString];
+    //here's hopin'!
+
+
+    UIImage *img = [UIImage imageAtPath:imgPath];
+    if (nil != img)
+        {
+            CGImageRef imgRef = [img imageRef];
+            height = CGImageGetHeight(imgRef);
+            width = CGImageGetWidth(imgRef);
+	    //NSLog(@"image's width: %d height: %d", width, height);
+            if (width <= 300)
+	      {
+		*returnHeight = (int)height;
+                return [NSString stringWithString:str];
+	      }
+            float aspectRatio = (float)height / (float)width;
+            width = 300;
+            height = (unsigned int)(300.0 * aspectRatio);
+	    *returnHeight = (int)height;
+        }
+    // Now, find if there's a "height" tag.
+    c = 0;
+    while (c + 8 < len)
+        {
+            range = NSMakeRange(c++, 7);
+            tempString = [[str substringWithRange:range] lowercaseString];
+            if ([tempString isEqualToString:@"height="])
+                {
+		  NSRange anotherRange = [str quotedRangePastIndex:c];
+		  NSString *heightNumString = [NSString stringWithFormat:@"%d", (int)height];
+		  if (anotherRange.location != NSNotFound)
+		    [str replaceCharactersInRange:anotherRange withString:heightNumString];
+		  len = [str length];
+
+		  break;
+                }
+        }
+    // If there's no height tag, we don't need to worry about inserting one.
+    // Now, to find the width tag.
+    c = 0;
+    BOOL foundWidth = NO;
+    while (c + 7 < len)
+        {
+            range = NSMakeRange(c++, 6);
+            tempString = [[str substringWithRange:range] lowercaseString];
+            if ([tempString isEqualToString:@"width="])
+	      {
+                    foundWidth = YES;
+		    NSRange anotherRange = [str quotedRangePastIndex:c];
+                    NSString *widthNumString = [NSString stringWithFormat:@"%d", (int)width];
+		    if (anotherRange.location != NSNotFound)
+		      [str replaceCharactersInRange:anotherRange withString:widthNumString];
+                    len = [str length];
+                    break;
+                }
+        }
+    if (!foundWidth)
+    // There was no width tag, so let's just insert one.
+        {
+            NSString *widthString = [NSString stringWithFormat:@" width=\"%d\" ", (int)width];
+            [str insertString:widthString atIndex:4];
+        }
+    NSLog(@"returning str: %@", str);
+    return [NSString stringWithString:str];
+}
+
++(NSString *)fixedHTMLStringForString:(NSString *)theOldHTML filePath:(NSString *)thePath addedHeight:(int *)height
+  // Fixes all img tags within a given string
+{
+  NSMutableString *theHTML = [NSMutableString stringWithString:theOldHTML];
+  int thisImageHeight = 0;
     unsigned int c = 0;
     unsigned int len = [theHTML length];
     while (c < len)
@@ -86,116 +207,16 @@
                             NSString *imageTagString = [theHTML substringWithRange: aRange];
                             [theHTML replaceCharactersInRange:aRange
                                  withString:[HTMLFixer fixedImageTagForString:imageTagString
-                                                        basePath:[thePath stringByDeletingLastPathComponent]]];
+                                                        basePath:[thePath stringByDeletingLastPathComponent]
+						       returnImageHeight:&thisImageHeight]];
                             len = [theHTML length];
+			    *height += thisImageHeight;
+			    thisImageHeight = 0;
                         }
                 }
             ++c;
         }
         
-    NSString *temp = [NSString stringWithFormat:@"<!--BooksApp modified %@ -->\n",
-                        [NSCalendarDate calendarDate]];
-    [theHTML insertString:temp atIndex:0];
-    ret = [theHTML writeToFile:thePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
-    [theHTML release];
-    return ret;
+    return [NSString stringWithString:theHTML];
 }
-
-+(NSString *)fixedImageTagForString:(NSString *)aStr basePath:(NSString *)path
-// Returns an image tag for which the image has been shrunk to 300 pixels wide.
-// Does nothing if the image is already under 300 px wide.
-// Assumes a local URL as the "src" element.
-{
-    NSMutableString *str = [NSMutableString stringWithString:aStr];
-    unsigned int len = [str length];
-    NSRange range;
-    NSString *tempString;
-    unsigned int c = 0;
-    unsigned int d = 0;
-    unsigned int width = 300;
-    unsigned int height = 0;
-    NSString *srcString = nil;
-    
-    // First step, find the "src" string.
-    while (c + 5 < len)
-        {
-            range = NSMakeRange(c++, 5);
-            tempString = [[str substringWithRange:range] lowercaseString];
-            if ([tempString isEqualToString:@"src=\""])
-                {
-                    c += 4;
-                    d = c;
-                    while ((c < len) && ([str characterAtIndex:c] != (unichar)'"'))
-                        ++c;
-                    NSRange anotherRange = NSMakeRange(d, (c-d));
-                    srcString = [str substringWithRange:anotherRange];
-                    //With any luck, this will be the file name.
-                    break;
-                }
-        }
-    if (srcString == nil)
-        return [aStr copy];
-    NSString *imgPath = [[path stringByAppendingPathComponent:srcString] stringByStandardizingPath];
-    UIImage *img = [UIImage imageAtPath:imgPath];
-    if (nil != img)
-        {
-            CGImageRef imgRef = [img imageRef];
-            width = CGImageGetWidth(imgRef);
-            if (width <= 300)
-                return [aStr copy];
-            height = CGImageGetHeight(imgRef);
-            float aspectRatio = (float)height / (float)width;
-            width = 300;
-            height = (unsigned int)(300.0 * aspectRatio);
-        }
-    // Now, find if there's a "height" tag.
-    c = 0;
-    while (c + 8 < len)
-        {
-            range = NSMakeRange(c++, 8);
-            tempString = [[str substringWithRange:range] lowercaseString];
-            if ([tempString isEqualToString:@"height=\""])
-                {
-                    c +=7;
-                    d = c;
-                    while ((c < len) && ([str characterAtIndex:c] != (unichar)'"'))
-                        c++;
-                    NSRange anotherRange = NSMakeRange(d, (c - d));
-                    NSString *heightNumString = [NSString stringWithFormat:@"%d", (int)height];
-                    [str replaceCharactersInRange:anotherRange withString:heightNumString];
-                    len = [str length];
-                    break;
-                }
-        }
-    // If there's no height tag, we don't need to worry about inserting one.
-    // Now, to find the width tag.
-    c = 0;
-    BOOL foundWidth = NO;
-    while (c + 7 < len)
-        {
-            range = NSMakeRange(c++, 7);
-            tempString = [[str substringWithRange:range] lowercaseString];
-            if ([tempString isEqualToString:@"width=\""])
-	      {   //FIXME: This fails if there's whitespace between width and a quote mark
-                    foundWidth = YES;
-                    c +=6;
-                    d = c;
-                    while ((c < len) && ([str characterAtIndex:c] != (unichar)'"'))
-                        c++;
-                    NSRange anotherRange = NSMakeRange(d, (c - d));
-                    NSString *widthNumString = [NSString stringWithFormat:@"%d", (int)width];
-                    [str replaceCharactersInRange:anotherRange withString:widthNumString];
-                    len = [str length];
-                    break;
-                }
-        }
-    if (!foundWidth)
-    // There was no width tag, so let's just insert one.
-        {
-            NSString *widthString = [NSString stringWithFormat:@" width=\"%d\" ", (int)width];
-            [str insertString:widthString atIndex:4];
-        }
-    return [NSString stringWithString:str];
-}
-
 @end

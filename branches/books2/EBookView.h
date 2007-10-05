@@ -33,6 +33,8 @@
 @interface EBookView : UITextView
 {
   //  UIViewTapInfo *tapinfo;
+  //UIWebView *theWebView;
+  //UITextView *internalTextView;
   NSString      *path;
   float         size;
   id            _heartbeatDelegate;
@@ -40,6 +42,7 @@
 }
 
 - (id)initWithFrame:(struct CGRect)rect;
+//- (struct CGRect)visibleRect;
 - (void)loadBookWithPath:(NSString *)thePath;
 - (void)loadBookWithPath:(NSString *)thePath numCharacters:(int)numChars didLoadAll:(BOOL *)didLoadAll;
 - (void)loadBookWithPath:(NSString *)thePath numCharacters:(int)numChars;

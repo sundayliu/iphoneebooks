@@ -218,11 +218,16 @@
 		        initWithTitle:[[file lastPathComponent]
 					stringByDeletingPathExtension]];
 	  sameFile = [[textView currentPath] isEqualToString:file];
-	  [navBar pushNavigationItem:tempItem withView:textView];
 	  if (!sameFile)
 	    // Slight optimization.  If the file is already loaded,
 	    // don't bother reloading.
 	    {
+	      CGRect rect = [textView frame];
+	      [textView release];
+	      textView = [[EBookView alloc] initWithFrame:rect];
+	      [self refreshTextViewFromDefaults];
+	      [textView setHeartbeatDelegate:self];
+
 	      int lastPt = [defaults lastScrollPointForFile:file];
 	      BOOL didLoadAll = NO;
 	      int numScreens = (lastPt / 460) + 1;  // how many screens down are we?
@@ -232,6 +237,7 @@
 	          CGPointMake(0.0f, (float)[defaults lastScrollPointForFile:[textView currentPath]]) animated:NO];
 	      textViewNeedsFullText = !didLoadAll;
 	    }
+	  [navBar pushNavigationItem:tempItem withView:textView];
 
 	  [tempItem release];
 	}
@@ -312,9 +318,9 @@
   if (![button isPressed]) // mouse up events only, kids!
     {
       textInverted = !textInverted;
-      [textView invertText:textInverted];
       [defaults setInverted:textInverted];
-	  [self toggleStatusBarColor];
+      [textView invertText:textInverted];
+      [self toggleStatusBarColor];
       struct CGRect rect = [UIHardware fullScreenApplicationContentRect];
       rect.origin.x = rect.origin.y = 0.0f;
       [textView setFrame:rect];
@@ -556,7 +562,7 @@
       textInverted = [defaults inverted];
       [textView invertText:textInverted];
 
-      [textView setTextFont:[defaults textFont]];
+      //[textView setTextFont:[defaults textFont]];
       
       [self toggleStatusBarColor];
     }
@@ -568,10 +574,11 @@
     else // not reading text
       [bottomNavBar hide:YES];
 
-    if (![defaults navbar])
+    /*    if (![defaults navbar])
       [textView setMarginTop:48];
     else
       [textView setMarginTop:0];
+    */
     if (![defaults toolbar])
       [textView setBottomBufferHeight:48];
     else

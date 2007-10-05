@@ -123,7 +123,25 @@ int numberCompare(id firstString, id secondString, void *context)
 {
   int ret;
   BOOL underscoreFound = NO;
+  BOOL firstFileIsPicture, secondFileIsPicture;
   unsigned int i;
+
+  // Texts should always come before pictures in the list.
+
+  NSString *firstExt = [[firstString pathExtension] lowercaseString];
+  NSString *secondExt = [[secondString pathExtension] lowercaseString];
+  firstFileIsPicture = ([firstExt isEqualToString:@"jpg"] ||
+			[firstExt isEqualToString:@"png"] ||
+			[firstExt isEqualToString:@"gif"]);
+  secondFileIsPicture = ([secondExt isEqualToString:@"jpg"] ||
+			 [secondExt isEqualToString:@"png"] ||
+			 [secondExt isEqualToString:@"gif"]);
+  if (firstFileIsPicture && !secondFileIsPicture)
+    return NSOrderedDescending;
+  if (!firstFileIsPicture && secondFileIsPicture)
+    return NSOrderedAscending;
+
+  //Now, if the two items are both texts or both pictures.
   //This for loop is here because rangeOfString: was segfaulting
   for (i = ([firstString length]-1); i >= 0; i--)
     {
@@ -145,13 +163,13 @@ int numberCompare(id firstString, id secondString, void *context)
       [firstMutable replaceOccurrencesOfString:@"_" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, firstLength)];
       [secondMutable replaceOccurrencesOfString:@"_" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, secondLength)];
 
-      ret = [firstMutable compare:secondMutable options:NSNumericSearch];
+      ret = [firstMutable compare:secondMutable options:(NSNumericSearch | NSCaseInsensitiveSearch)];
       [firstMutable release];
       [secondMutable release];
     }
   else
     {
-      ret = [firstString compare:secondString options:NSNumericSearch];
+      ret = [firstString compare:secondString options:(NSNumericSearch | NSCaseInsensitiveSearch)];
     }
   return ret;
 }
