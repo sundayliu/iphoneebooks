@@ -27,3 +27,18 @@ But there is no way to accurately determine where the image button should be pla
 So the best we can hope for might be a button for each image at the top of the screen, with the word "Image" appearing where the in-line images lie.  Maybe use the alt text, if it exists?
 
 There are libraries for parsing HTML, of course.  Perhaps I need to invest in learning them.
+
+===More!===
+
+UITextView DOES display images!  It just needs full image tags (i.e. file:///localhost/path/to/image/goes/here.jpg) to make it work.
+
+===On the internal UIWebView found in the UITextView===
+
+Access it like so: `[textView _webView]`.
+
+This allows some neat tricks, like:
+
+ * `[[textView _webView] setUserStyleSheetLocation:path]` to implement a style sheet for the text
+ * `[[textView _webView] frame]` to get the full bounds of the rendered text
+
+We can hope that this method won't disappear if Apple opens up the API.
