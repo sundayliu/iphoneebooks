@@ -8,7 +8,7 @@ List of things I, roosterspice, want to do with the app.  If you'd like to add a
 
 = Things I want to implement =
 As of 8/31/2007
-  * Some sort of page numbering system, even if it's just calculated by number of screens, and a "jump to page" button.  This may be as close as we can get to a "jump to percentage" functionality.  (thanks samsonu.mobile)
+  * Some sort of page numbering system, even if it's just calculated by number of screens, and a "jump to page" button.  This may be as close as we can get to a "jump to percentage" functionality.  (thanks samsonu.mobile)  -- *Superceded by scroll-slider.*
 
 As of 8/23/2007
   * Is there a footnote standard for HTML?  Being able to tap a footnote and read it right there would be great.  I have no idea how to implement this at the moment...
