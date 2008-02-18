@@ -1,6 +1,0 @@
-#summary I know what you did last version.
-#labels Featured
-
-= Change Log =
-
-Please see http://iphoneebooks.googlecode.com/svn/trunk/CHANGELOG for the recent changes.
