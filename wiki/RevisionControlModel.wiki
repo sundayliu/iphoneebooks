@@ -1,5 +1,5 @@
+#summary Books' hybrid git/Subversion development model
 #labels Featured,Phase-Implementation
-#Books' hybrid git/Subversion development model
 
 = Introduction =
 
