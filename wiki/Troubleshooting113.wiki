@@ -1,0 +1,54 @@
+#summary Troubleshooting 1.1.3 issues
+#labels Phase-Support,Featured
+
+= Changes in 1.1.3 =
+
+The change in Apple's user and rights strategy from 1.1.2 to 1.1.3 has caused all manners of problems for many applications, and Books is no exception.  The following steps will help diagnose where rights problems may occur (so that we can add Installer or application code to fix the problems proactively) and should also help fix the problems on a particular device.
+
+= Checking Existing Rights =
+
+First, it's worth checking rights in a few locations to see what might be wrong.  Please run the following commands and send the output to the developers.
+
+First ensure that the preferences file is writable:
+{{{
+ls -l /var/mobile/Library/Preferences/com.zacharybrewstergeisz.books.plist
+}}}
+
+Then check the Preferences directory is writable.  This command will return a lot of output, but only the line containing "Preferences" is needed.
+{{{
+ls -l /var/mobile/Library/Preferences
+}}}
+
+Check that rights for Media and Library are correct:
+{{{
+ls -l /var/mobile
+}}}
+
+= Set Rights to Sane Values =
+
+The following commands will assert sane rights over all of the files Books must access:
+{{{
+chown -R mobile:mobile /var/mobile/Media/EBooks
+chown mobile:mobile /var/mobile/Library/Preferences/com.zacharybrewstergeisz.books.plist
+find /var/mobile/Media/EBooks -type d -exec chmod ug+rwx "{}" \;
+find /var/mobile/Media/EBooks -type f -exec chmod ug+rw "{}" \;
+}}}
+
+The above commands force ownership of Books related files to the mobile user and ensure that directories can be traversed and that all book files are readable and writable by the mobile user which runs iPhone applications.
+
+= Test Books Again =
+
+At this point, Books should hopefully work.  Please give it a quick test.  If it works, you can stop here, and please let us know that file permissions fixed the problem.
+
+= Deleting the Preferences File =
+
+If Books still fails, it may be necessary to remove the preferences file.  The following command will move the file aside:
+{{{
+mv /var/mobile/Library/Preferences/com.zacharybrewstergeisz.books.plist /var/mobile/books.plist
+}}}
+
+Please test Books again at this point.  If it works now, then something was corrupt in the preferences file.  If possible, it would be useful for the developers to see several such preferences file.  
+
+*PLEASE BE AWARE THAT THE PREFERENCES FILE CONTAINS THE NAMES OF ALL OF YOUR BOOK FILES.*
+
+If you don't mind sharing that with the developers, we'd be grateful if you could the file in.  You can email preferences files to pendorbound at gmail dot com.
