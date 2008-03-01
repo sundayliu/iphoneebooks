@@ -1,5 +1,5 @@
 #summary Installing Books.app on your iPhone.
-#labels Featured
+#labels Featured,Deprecated
 
 =READ THIS FIRST!=
 
