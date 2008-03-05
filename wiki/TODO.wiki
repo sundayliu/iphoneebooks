@@ -1,44 +1,20 @@
 #summary List of things I want to implement, and things I never will.
-#labels Featured
+#labels Featured,Phase-Requirements
 
-= Introduction =
-
-List of things I, roosterspice, want to do with the app.  If you'd like to add a feature, please feel free to do so and submit a patch!
-
-
-= Things I want to implement =
+= Things that would be nice to implement =
 As of 8/31/2007
   * Some sort of page numbering system, even if it's just calculated by number of screens, and a "jump to page" button.  This may be as close as we can get to a "jump to percentage" functionality.  (thanks samsonu.mobile)  -- *Superceded by scroll-slider.*
 
 As of 8/23/2007
   * Is there a footnote standard for HTML?  Being able to tap a footnote and read it right there would be great.  I have no idea how to implement this at the moment...
 
-As of 8/20/2007
-  * Implement persistence _for every file you've read,_ not just the file you're currently reading; this will allow you to read multiple books simultaneously. -- *DONE, version 0.9.*
-
-As of 8/16/2007
-  * Allow arbitrary folders, etc. in the EBooks folder, and have the FileBrowser handle them correctly.  (thanks Chadesh)  -- *DONE as of 0.7.*
-
-As of 8/15/2007
-  * Forward/back buttons in the text view, to allow you to jump to the nearby chapters without going back to the chapter browser (thanks MarkC). -- *DONE in version 0.8.  Finally.*
-  * Perhaps controls should disappear when you scroll, and reappear when you two-finger tap?  (Since a two-finger tap is the only event I can consistently make happen.)  This would be especially essential if I add a second navbar along the bottom. -- *DONE.  Navbars disappear when scrolling and reappear with a tap.*
-
-As of 8/13/2007
-  * Inline HTML images don't work.  Should they?  I think so.  But this would require a major rethinking of the architecture, and will probably have to wait until Apple decides to open things up and document them. -- *DONE!  The heavens sing!  Version 1.2, October 2007--darn, but that took a long time.*
-
 As of 8/12/2007
   * Allow deletion of books directly from the file browser. *Done a while ago.*
   * Bookmarking?  Press a button to set a bookmark at the top of the page, click the bookmark to remove it.  Is this neccesary if persistence works?  Some sort of "Go to bookmark" functionality would also be needed as well, then.
   * Better filenames for chapters, via GutenSplit.
 
-As of 8/10/2007
-  * Implement persistence, so the application picks up where you left off when you re-open it. -- *WORKS!  Now in the public SVN; will be released in version 0.4.*
-  * Implement real-time text resizing, ideally via simple taps and double-taps. -- *WORKS via buttons in bottom navigation bar.*
-  * Fix the FileBrowser so it shows only directories, .txt, and .htm(l) files. -- *DONE*
-  * Handle .txt files properly. -- *DONE.  UTF-8, ISO Latin-1, Mac OS Roman, and ASCII encodings are all supported as of version 0.5.2.*
-  * Simplify the process of getting books copied to the phone via shell-script or full Cocoa app.  Integrate GutenMark on the server side. -- *A shell script, copybookdir.sh, is available via SVN in the trunk/scripts directory.*
-
 = Things that will never be implemented =
 
-  * Proprietary DRM'd eBooks, such as those sold by Mobipocket, eReader, etc.  Books.app is released under the GNU GPL, and as such its source code must be open.  If the commercial eBook publishers want to pay me a lot of money to code a different, closed-source reader from scratch, I'd be happy to do so.  But Books.app will always be free and open-source.  
+  * Proprietary DRM'd eBooks, such as those sold by Mobipocket, eReader, etc.  Books.app is released under the GNU GPL, and as such its source code must be open.  If the commercial eBook publishers want to pay me a lot of money to code a different, closed-source reader from scratch, I'd be happy to do so.  But Books.app will always be free and open-source.  (But never under estimate the power of reverse engineering...)
+
   * Downloading eBooks directly from the 'net, as opposed to the iTunes-esque download-to-computer-and-sync.  There are several reasons for this.  Most importantly, you can just read your books in Safari if you're connected to the Internet.  Secondly, don't forget that none of these iPhone hacks are supported by Apple, and the moment you update your iPhone software, all your books will vanish.  Therefore, it's _incredibly_ important to keep a local copy of all your books, so you can re-load them if needed!
