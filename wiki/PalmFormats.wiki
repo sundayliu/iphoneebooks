@@ -12,11 +12,12 @@ Books.app attempts to open all .pdb files, but then checks for a signature strin
 == Known Palm PDB Document Formats ==
 
  * TEXtREAd - Standard PalmDOC -- supported in 1.1
+ * TEXtTlDc - Tealdoc - Same encoding as PalmDoc, with some extra HTML-like tags for bookmarks and such
+ * (Note that anything starting with TEXt is currently treated as PalmDOC)
  * !DataPlkr - Plucker (http://www.plkr.org/) -- partial support in 1.1 - no links or graphics yet
  * !ToGoToGo - iSilo (http://www.isilo.com/) -- closed source format, no docs available
  * PNRdPPrs - PalmReader/PeanutPress/eReader (http://www.ereader.com/) -- closed source format, usually with DRM, no docs available
  * !MobiPock - Mobi Pocker
- * TEXtTIDc - TealDoc
  * ToRaTRPW - Tome Rader
 
 I don't currently have any documents encoded in Mobi, Teal, or TomeRader format, but if anyone does and could send them to my pendorbound ~at~ gmail, I'd appreciate it.  I think at least one of those is really PalmDOC with minor if any modifications.  If that's the case, a small change to the format detection code would allow them to be opened.
