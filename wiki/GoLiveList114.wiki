@@ -1,0 +1,40 @@
+#summary List of outstanding issues before a 1.1.4 official release
+#labels Phase-Requirements,todo
+
+= Introduction =
+
+Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionality.  Below is a list of known issues that need to be fixed before a final release.
+
+ * Fix rotate reflow - text doesn't reflow when changing from landscape to portrait
+
+ * Screenshot nav bars - screenshot doesn't include the navigation bars
+
+ * Smaller default.PNG - remove the oversized old book and replace with something much smaller (filesize)
+
+ * View sliding directions - Particularly when changing chapters, the view transitions don't always go the correct directions.  Might also want to re-evaluate swipe direction for next/prev chapter.
+
+ * Don't transition on snapshot startup - If the startup image isn't a book cover, don't transition after load
+
+ * Fix up old symlinks in installer - Remove the old Default.png symlink before installing
+
+ * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD
+
+ * Store rotate orientation - the current rotation isn't saved/restored, only lock status
+
+ * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition
+
+ * File browser read indicator - File read indicator doesn't refresh until file browser repaints the row
+
+ * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
+
+ * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching
+
+ * Still some text cut-off at bottom - some documents lose the bottom text
+
+ * Status bar color change for invert
+
+ * Invert goes black on black for many books - some (many??) books don't redraw text color properly
+
+ * Flash of white bg on invert
+
+ * New rotate/lock icon - overlay a lock icon to show rotation lock
