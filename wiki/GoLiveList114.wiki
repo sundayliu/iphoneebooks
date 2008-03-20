@@ -29,6 +29,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
   * When an image is displayed, cannot get the navbar and toolbar to slide in. Very important as there is no way to get out of this display short of leaving the app and deleting preference
 
+  * Fix handling of swipe and touch sensitive zone in rotated EBookView
 
 = Installer stuff: =
 
