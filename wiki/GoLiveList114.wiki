@@ -37,6 +37,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
+  * Images in html files don't work as they used to in 1.3.7
 
 = Fixed: =
 
