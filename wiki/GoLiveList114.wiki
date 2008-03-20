@@ -36,6 +36,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
   * Settings window does not behave correctly when app is rotated
 
+  * When the view is rotated the snapshot should be computed rotated
+
 
 = Installer stuff: =
 
