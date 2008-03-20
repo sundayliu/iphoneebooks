@@ -34,6 +34,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
   * Images in html files don't work as they used to in 1.3.7
 
+  * Settings window does not behave correctly when app is rotated
+
 
 = Installer stuff: =
 
