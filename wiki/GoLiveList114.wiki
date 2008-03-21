@@ -56,4 +56,4 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Invert goes black on black for many books - some (many??) books don't redraw text color properly -ZSB 20-Mar-2008 22:51EDT
 
-* When an image is displayed, cannot get the navbar and toolbar to slide in. Very important as there is no way to get out of this display short of leaving the app and deleting preference -ZSB 20-Mar-2008 23:25EDT
+ * When an image is displayed, cannot get the navbar and toolbar to slide in. Very important as there is no way to get out of this display short of leaving the app and deleting preference -ZSB 20-Mar-2008 23:25EDT
