@@ -11,8 +11,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * View sliding directions - Particularly when changing chapters, the view transitions don't always go the correct directions.  Might also want to re-evaluate swipe direction for next/prev chapter.
 
- * Don't transition on snapshot startup - If the startup image isn't a book cover, don't transition after load
-
  * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
@@ -55,5 +53,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Status bar color change for invert -ZSB 18-Mar-2008 23:30EDT
 
-
  * Fix handling of swipe and touch sensitive zone in rotated EBookView -BCC 20-Mar-2008 23:50EDT
+
+ * Don't transition on snapshot startup - If the startup image isn't a book cover, don't transition after load -ZSB 20-Mar-2008 21:55EDT
