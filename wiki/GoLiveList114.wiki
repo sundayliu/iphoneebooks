@@ -11,6 +11,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * View sliding directions - Particularly when changing chapters, the view transitions don't always go the correct directions.  Might also want to re-evaluate swipe direction for next/prev chapter.
 
+ * Changing chapters with swipe doesn't update the filename in in the nav bar's back button.
+
  * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
