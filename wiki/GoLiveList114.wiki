@@ -5,7 +5,7 @@
 
 Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionality.  Below is a list of known issues that need to be fixed before a final release.
 
-= Pending: =
+= Pending (Critical): =
 
  * Fix rotate reflow - text doesn't reflow when changing from landscape to portrait
 
@@ -13,23 +13,25 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Changing chapters with swipe doesn't update the filename in in the nav bar's back button.
 
+ * Still some text cut-off at bottom - some documents lose the bottom text
+
+ * Images in html files don't work as they used to in 1.3.7 -- Has this been fixed?
+
+ * Settings window does not behave correctly when app is rotated
+
+= Pending (Important, but not show stopping): =
+
+ * When the view is rotated the snapshot should be computed rotated
+
  * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
 
  * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching
 
- * Still some text cut-off at bottom - some documents lose the bottom text
-
- * Flash of white bg on invert
+ * Flash of white bg on invert -- Has this been fixed?
 
  * New rotate/lock icon - overlay a lock icon to show rotation lock
-
- * Images in html files don't work as they used to in 1.3.7
-
- * Settings window does not behave correctly when app is rotated
-
- * When the view is rotated the snapshot should be computed rotated
 
 
 = Installer stuff: =
