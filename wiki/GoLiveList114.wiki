@@ -21,8 +21,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Still some text cut-off at bottom - some documents lose the bottom text
 
- * Invert goes black on black for many books - some (many??) books don't redraw text color properly
-
  * Flash of white bg on invert
 
  * New rotate/lock icon - overlay a lock icon to show rotation lock
@@ -58,3 +56,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Fix handling of swipe and touch sensitive zone in rotated EBookView -BCC 20-Mar-2008 23:50EDT
 
  * Don't transition on snapshot startup - If the startup image isn't a book cover, don't transition after load -ZSB 20-Mar-2008 21:55EDT
+
+ * Invert goes black on black for many books - some (many??) books don't redraw text color properly -ZSB 20-Mar-2008 22:51EDT
