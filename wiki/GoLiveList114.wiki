@@ -25,14 +25,11 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * New rotate/lock icon - overlay a lock icon to show rotation lock
 
-  * When an image is displayed, cannot get the navbar and toolbar to slide in. Very important as there is no way to get out of this display short of leaving the app and deleting preference
+ * Images in html files don't work as they used to in 1.3.7
 
+ * Settings window does not behave correctly when app is rotated
 
-  * Images in html files don't work as they used to in 1.3.7
-
-  * Settings window does not behave correctly when app is rotated
-
-  * When the view is rotated the snapshot should be computed rotated
+ * When the view is rotated the snapshot should be computed rotated
 
 
 = Installer stuff: =
@@ -58,3 +55,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Don't transition on snapshot startup - If the startup image isn't a book cover, don't transition after load -ZSB 20-Mar-2008 21:55EDT
 
  * Invert goes black on black for many books - some (many??) books don't redraw text color properly -ZSB 20-Mar-2008 22:51EDT
+
+* When an image is displayed, cannot get the navbar and toolbar to slide in. Very important as there is no way to get out of this display short of leaving the app and deleting preference -ZSB 20-Mar-2008 23:25EDT
