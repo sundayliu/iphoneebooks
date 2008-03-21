@@ -29,7 +29,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching
 
- * Flash of white bg on invert -- Has this been fixed?
+ * Flash of white bg on invert -- Has this been fixed? No not fixed.
 
  * New rotate/lock icon - overlay a lock icon to show rotation lock
 
