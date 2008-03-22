@@ -33,6 +33,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * New rotate/lock icon - overlay a lock icon to show rotation lock
 
+ * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89.
+
 
 = Installer stuff: =
 
