@@ -9,8 +9,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Fix rotate reflow - text doesn't reflow when changing from landscape to portrait
 
- *  Might also want to re-evaluate swipe direction for next/prev chapter.
-
  * Changing chapters with swipe doesn't update the filename in in the nav bar's back button.
 
  * Still some text cut-off at bottom - some documents lose the bottom text
@@ -41,6 +39,9 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
 = Fixed: =
+ *  Might also want to re-evaluate swipe direction for next/prev chapter.- BCC 22-March-2008 17:10 
+
+
     *  View sliding directions - Particularly when changing chapters, the view transitions don't always go the correct directions. - BCC 22-March-2008 17:10 
 
     * Flash of white bg on invert  -BCC 22-March-2008 16:21
