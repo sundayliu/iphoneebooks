@@ -29,8 +29,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching
 
- * Flash of white bg on invert -- Has this been fixed? No not fixed.
-
  * New rotate/lock icon - overlay a lock icon to show rotation lock
 
  * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89.
@@ -43,6 +41,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
 = Fixed: =
+
+    * Flash of white bg on invert -- Has this been fixed? No not fixed. -BCC 22-March-2008 16:21
 
     * Screenshot nav bars - screenshot doesn't include the navigation bars -ZSB 18-Mar-2008 23:30EDT
 
