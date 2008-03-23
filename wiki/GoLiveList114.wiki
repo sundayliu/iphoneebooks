@@ -9,8 +9,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Images in html files don't work as they used to in 1.3.7 -- Has this been fixed? No not fixed
 
- * Settings window does not behave correctly when app is rotated
-
+ 
 = Pending (Important, but not show stopping): =
 
  * When the view is rotated the snapshot should be computed rotated
@@ -33,6 +32,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
 = Fixed: =
+  * Settings window does not behave correctly when app is rotated- BCC 22-March-2008 23:10 
+
  *  Might also want to re-evaluate swipe direction for next/prev chapter.- BCC 22-March-2008 17:10 
 
 
