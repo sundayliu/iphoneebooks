@@ -7,8 +7,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Pending (Critical): =
 
-  * Fix for image display caused new threading bug - filebrowser remains responsive to clicks while document is loading making it possible to load multiple documents at once.
-
 = Pending (Important, but not show stopping): =
 
  * When the view is rotated the snapshot should be computed rotated
@@ -17,37 +15,35 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
 
- * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching
-
-
  * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89.
 
 
 = Installer stuff: =
 
-    * ~~Fix up old symlinks in installer - Remove the old Default.png symlink before installing - Nevermind: Uninstall followed by reinstall fixes this~~
+ * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
-    * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
+ * ~~Fix up old symlinks in installer - Remove the old Default.png symlink before installing - Nevermind: Uninstall followed by reinstall fixes this~~
 
 = Fixed: =
-* New rotate/lock icon - overlay a lock icon to show rotation lock -BCC 23 March 2008 12:22
+
+ * New rotate/lock icon - overlay a lock icon to show rotation lock -BCC 23 March 2008 12:22
 
  * gif image don't show as cover - BCC 23 March 2008 2:30
 
-  * Settings window does not behave correctly when app is rotated- BCC 22-March-2008 23:10 
+ * Settings window does not behave correctly when app is rotated- BCC 22-March-2008 23:10 
 
  *  Might also want to re-evaluate swipe direction for next/prev chapter.- BCC 22-March-2008 17:10 
 
 
-    *  View sliding directions - Particularly when changing chapters, the view transitions don't always go the correct directions. - BCC 22-March-2008 17:10 
+ *  View sliding directions - Particularly when changing chapters, the view transitions don't always go the correct directions. - BCC 22-March-2008 17:10 
 
-    * Flash of white bg on invert  -BCC 22-March-2008 16:21
+ * Flash of white bg on invert  -BCC 22-March-2008 16:21
 
-    * Screenshot nav bars - screenshot doesn't include the navigation bars -ZSB 18-Mar-2008 23:30EDT
+ * Screenshot nav bars - screenshot doesn't include the navigation bars -ZSB 18-Mar-2008 23:30EDT
 
-    * Smaller default.PNG - remove the oversized old book and replace with something much smaller (filesize)  -ZSB 18-Mar-2008 23:30EDT
+ * Smaller default.PNG - remove the oversized old book and replace with something much smaller (filesize)  -ZSB 18-Mar-2008 23:30EDT
 
-    * Store rotate orientation - the current rotation isn't saved/restored, only lock status  -ZSB 18-Mar-2008 23:30EDT
+ * Store rotate orientation - the current rotation isn't saved/restored, only lock status  -ZSB 18-Mar-2008 23:30EDT
 
  * File browser read indicator - File read indicator doesn't refresh until file browser repaints the row -ZSB 18-Mar-2008 23:30EDT
 
@@ -68,3 +64,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * ~~Changing chapters with swipe doesn't update the filename in in the nav bar's back button. - Nevermind: It's not supposed to.  Back is the parent directory.~~
 
  * Images in html files don't work as they used to in 1.3.7 -ZSB 23-Mar-2008 14:00EDT
+
+ * Fix for image display caused new threading bug - filebrowser remains responsive to clicks while document is loading making it possible to load multiple documents at once. -ZSB 23-Mar-2008 13:55EDT
+
+ * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching -ZSB 23-Mar-2008 13:55EDT
