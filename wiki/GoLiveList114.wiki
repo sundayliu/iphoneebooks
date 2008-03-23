@@ -12,6 +12,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * When the view is rotated the snapshot should be computed rotated
 
  * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition
+ 
+ * When opening book, the toolbar transitions before the book view transitions into place
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
 
