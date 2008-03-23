@@ -11,8 +11,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * When the view is rotated the snapshot should be computed rotated
 
- * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition
- 
  * When opening book, the toolbar transitions before the book view transitions into place
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
@@ -70,3 +68,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Fix for image display caused new threading bug - filebrowser remains responsive to clicks while document is loading making it possible to load multiple documents at once. -ZSB 23-Mar-2008 13:55EDT
 
  * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching -ZSB 23-Mar-2008 13:55EDT
+
+ * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition -ZSB 23-Mar-2008 14:07EDT
