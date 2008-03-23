@@ -7,8 +7,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Pending (Critical): =
 
- * Changing chapters with swipe doesn't update the filename in in the nav bar's back button.
-
  * Images in html files don't work as they used to in 1.3.7 -- Has this been fixed? No not fixed
 
  * Settings window does not behave correctly when app is rotated
@@ -63,3 +61,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Still some text cut-off at bottom - some documents lose the bottom text -ZSB 22-Mar-2008 14:40EDT
 
  * Fix rotate reflow - text doesn't reflow when changing from landscape to portrait -ZSB 22-Mar-2008 21:05EDT
+
+ * ~~Changing chapters with swipe doesn't update the filename in in the nav bar's back button. - Nevermind: It's not supposed to.  Back is the parent directory.~~
