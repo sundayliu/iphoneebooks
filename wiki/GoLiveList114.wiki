@@ -15,9 +15,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
 
- * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89.
-
-
 = Installer stuff: =
 
  * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
@@ -70,3 +67,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching -ZSB 23-Mar-2008 13:55EDT
 
  * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition -ZSB 23-Mar-2008 14:07EDT
+
+ * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89. -ZSB 23-Mar-2008 15:53EDT
