@@ -7,9 +7,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Pending (Critical): =
 
- * New rotate/lock icon - overlay a lock icon to show rotation lock
-
- * Fix for image display caused new threading bug - filebrowser remains responsive to clicks while document is loading making it possible to load multiple documents at once.
+  * Fix for image display caused new threading bug - filebrowser remains responsive to clicks while document is loading making it possible to load multiple documents at once.
 
 = Pending (Important, but not show stopping): =
 
@@ -32,6 +30,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
 = Fixed: =
+* New rotate/lock icon - overlay a lock icon to show rotation lock -BCC 23 March 2008 12:22
+
  * gif image don't show as cover - BCC 23 March 2008 2:30
 
   * Settings window does not behave correctly when app is rotated- BCC 22-March-2008 23:10 
