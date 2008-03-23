@@ -30,7 +30,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Installer stuff: =
 
-    * Fix up old symlinks in installer - Remove the old Default.png symlink before installing 
+    * ~~Fix up old symlinks in installer - Remove the old Default.png symlink before installing - Nevermind: Uninstall followed by reinstall fixes this~~
 
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
