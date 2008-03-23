@@ -7,7 +7,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Pending (Critical): =
 
- 
+ * New rotate/lock icon - overlay a lock icon to show rotation lock
+
 = Pending (Important, but not show stopping): =
 
  * When the view is rotated the snapshot should be computed rotated
@@ -18,7 +19,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Show HUD sooner - might be possible to pop the HUD in applicationDidFinishLaunching
 
- * New rotate/lock icon - overlay a lock icon to show rotation lock
 
  * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89.
 
@@ -30,6 +30,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
     * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
 = Fixed: =
+ * gif image don't show as cover - BCC 23 March 2008 2:30
+
   * Settings window does not behave correctly when app is rotated- BCC 22-March-2008 23:10 
 
  *  Might also want to re-evaluate swipe direction for next/prev chapter.- BCC 22-March-2008 17:10 
