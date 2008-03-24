@@ -15,8 +15,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Need to modify style sheets to cleanse problematic elements without destroying all styles.
 
- * File isn't reloaded after encoding prefs change.
- 
 = Pending (Important, but not show stopping): =
 
  * When the view is rotated the snapshot should be computed rotated
@@ -24,6 +22,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * When opening book, the toolbar transitions before the book view transitions into place
 
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
+
+ * Scroll point isn't restored after book is reloaded after encoding change.
 
 = Installer stuff: =
 
@@ -85,3 +85,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * When rotating while viewing a book, the scroll point isn't restored to the same point in the text. -ZSB 24-Mar-2008 19:10EDT
 
  * Text encoding preference don't show when clicking the disclosure in prefs window. -ZSB 24-Mar-2008 19:21EDT
+
+ * File isn't reloaded after encoding prefs change. -ZSB 24-Mar-2008 19:51EDT
