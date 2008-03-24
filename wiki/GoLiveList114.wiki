@@ -7,7 +7,7 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Pending (Critical): =
  
- * Text encoding preference may be broken
+ * Text encoding preference don't show when clicking the disclosure in prefs window.
 
  * Font settings view doesn't fill screen in landscape mode.
 
