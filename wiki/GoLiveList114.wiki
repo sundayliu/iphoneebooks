@@ -17,8 +17,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Need to modify style sheets to cleanse problematic elements without destroying all styles.
  
- * Clock is off center at portrait startup until app is rotated.
-
 = Pending (Important, but not show stopping): =
 
  * When the view is rotated the snapshot should be computed rotated
@@ -79,3 +77,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Hide slider before showing file browser - When transitioning from book to browser, the scroll slider doesn't disappear before the transition -ZSB 23-Mar-2008 14:07EDT
 
  * Fix wacky sorting logic in FileBrowser-numberCompare(id, id, void) -  I think it's the cause of issue #89. -ZSB 23-Mar-2008 15:53EDT
+
+ * Clock is off center at portrait startup until app is rotated. -ZSB 24-Mar-2008 18:48EDT
