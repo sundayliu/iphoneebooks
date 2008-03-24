@@ -16,6 +16,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Font settings may be broken, "if you tap on Font while in Landscape mode, the display looks weird"
 
  * Need to modify style sheets to cleanse problematic elements without destroying all styles.
+ 
+ * Clock is off center at portrait startup until app is rotated.
 
 = Pending (Important, but not show stopping): =
 
