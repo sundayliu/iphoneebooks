@@ -11,8 +11,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
  * Text encoding settings view doesn't fill screen in landscape mode.
 
- * Prefs button doesn't work when phone is rotated to the right.
-
  * Need to modify style sheets to cleanse problematic elements without destroying all styles.
 
 = Pending (Important, but not show stopping): =
@@ -24,6 +22,8 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
 
  * Scroll point isn't restored after book is reloaded after encoding change.
+
+ * ~~Prefs button doesn't work when phone is rotated to the right. - Can no longer reproduce~~
 
 = Installer stuff: =
 
