@@ -9,6 +9,10 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  
  * Font settings view doesn't fill screen in landscape mode.
 
+ * Text encoding settings view doesn't fill screen in landscape mode.
+
+ * Prefs button doesn't work when phone is rotated to the right.
+
  * Need to modify style sheets to cleanse problematic elements without destroying all styles.
 
  * File isn't reloaded after encoding prefs change.
