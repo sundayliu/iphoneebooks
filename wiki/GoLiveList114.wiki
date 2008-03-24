@@ -7,11 +7,11 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
 
 = Pending (Critical): =
  
- * Text encoding preference don't show when clicking the disclosure in prefs window.
-
  * Font settings view doesn't fill screen in landscape mode.
 
  * Need to modify style sheets to cleanse problematic elements without destroying all styles.
+
+ * File isn't reloaded after encoding prefs change.
  
 = Pending (Important, but not show stopping): =
 
@@ -79,3 +79,5 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD -ZSB 24-Mar-2008 17:30EDT
 
  * When rotating while viewing a book, the scroll point isn't restored to the same point in the text. -ZSB 24-Mar-2008 19:10EDT
+
+ * Text encoding preference don't show when clicking the disclosure in prefs window. -ZSB 24-Mar-2008 19:21EDT
