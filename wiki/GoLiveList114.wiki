@@ -6,6 +6,16 @@
 Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionality.  Below is a list of known issues that need to be fixed before a final release.
 
 = Pending (Critical): =
+ 
+ * When rotating while viewing a book, the scroll point isn't restored to the same point in the text.
+
+ * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
+
+ * Text encoding preference may be broken
+
+ * Font settings may be broken
+
+ * Need to modify style sheets to cleanse problematic elements without destroying all styles.
 
 = Pending (Important, but not show stopping): =
 
@@ -16,8 +26,6 @@ Ideally, 1.1.4 will be bug free, at least for basic startup/reading functionalit
  * Imageview dealloc - image view leaks.  Possibly chapter changes leak as well.  GSLog on all object alloc/dealloc and plug it up!
 
 = Installer stuff: =
-
- * Fix up old book paths in installer - Create a separate installer package which will migrate books over - ideally without needing BSD 
 
  * ~~Fix up old symlinks in installer - Remove the old Default.png symlink before installing - Nevermind: Uninstall followed by reinstall fixes this~~
 
