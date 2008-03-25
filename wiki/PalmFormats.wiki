@@ -15,7 +15,7 @@ Books.app attempts to open all .pdb files, but then checks for a signature strin
  * TEXtTlDc - Tealdoc - Same encoding as PalmDoc, with some extra HTML-like tags for bookmarks and such
  * (Note that anything starting with TEXt is currently treated as PalmDOC)
  * !DataPlkr - Plucker (http://www.plkr.org/) -- partial support in 1.1 - no links or graphics yet
- * !ToGoToGo - iSilo (http://www.isilo.com/) -- closed source format, no docs available
+ * !ToGoToGo  & SDocSilX- iSilo (http://www.isilo.com/) -- closed source format, no docs available
  * PNRdPPrs - PalmReader/PeanutPress/eReader (http://www.ereader.com/) -- closed source format, usually with DRM, no docs available
  * !MobiPock - Mobi Pocker
  * ToRaTRPW - Tome Rader
