@@ -1,5 +1,5 @@
 #summary List of outstanding issues before a 1.1.4 official release
-#labels Phase-Requirements,todo
+#labels Phase-Requirements,todo,Deprecated
 
 = Introduction =
 
