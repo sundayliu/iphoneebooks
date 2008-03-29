@@ -1,5 +1,5 @@
 #summary Important notes for the Location Fix installer
-#labels Phase-Support
+#labels Phase-Support,Deprecated
 
 = Use with caution! =
 
