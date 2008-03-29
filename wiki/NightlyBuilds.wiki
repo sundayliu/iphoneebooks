@@ -1,5 +1,5 @@
 #summary Continuous Integration trunk builds for the adventurous
-#labels Phase-Implementation
+#labels Phase-Implementation,Deprecated
 
 = Worse than beta... =
 
