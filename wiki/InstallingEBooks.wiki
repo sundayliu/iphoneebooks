@@ -2,7 +2,7 @@
 #labels Featured
 
 = Important! =
-Books.app looks for files in an EBooks directory, within the root user's Media directory.  If you don't put the books there (whether they're individual files, or chapters within a directory), Books.app will not see them.  Whatever tool you're using to copy books over (and there are many, apparently), be sure you've created the EBooks folder before you begin.
+Books.app looks for files in an EBooks directory, within the mobile user's Media directory.  If you don't put the books there (whether they're individual files, or chapters within a directory), Books.app will not see them.  Whatever tool you're using to copy books over (and there are many, apparently), be sure you've created the EBooks folder before you begin.
 
 Also, make sure your extensions are correct.  Books.app can only read .txt, .htm, or .html files.
 
@@ -31,10 +31,10 @@ Happy Books.app user Stephen writes:
   # Click "Open Connection," the top right button in the window. 
   # In the "Protocol" drop-down select "SFTP." Leave the port field as 22. 
   # In the "Server" field enter your iPhone's IP address. 
-  # In the "Username" field enter "root" and "dottie" in the password field (unless you changed the password of course). _WHICH YOU SHOULD! -- Zach_
+  # In the "Username" field enter "mobile" and "alpine" in the password field (unless you changed the password of course). _WHICH YOU SHOULD! -- Zach_
   # Bookmark the connection: Click the "Bookmarks" button, then the "+" sign at the bottom of the bookmarks tab that just slid out.
 
-This logs you into the root user folder. Now you you can make the "EBooks" folder in the Media folder and simply drag books and book folders from the Finder! You can also drag things out for a quick back up before upgrading to the next firmware."
+This logs you into the mobile user folder. Now you you can make the "EBooks" folder in the Media folder and simply drag books and book folders from the Finder! You can also drag things out for a quick back up before upgrading to the next firmware."
 
 == Less easy way: copy books using iPHUC ==
 
@@ -53,8 +53,8 @@ To do this, you must first have enabled SSH on your phone, or it won't work at a
 
   # Find out your iPhone's IP address: Settings -> WiFi, then click the blue arrow to the right of your checked network.  The IP address will be listed on the next screen.  For the example we'll call it 192.168.1.1.
   # Make sure you don't let your iPhone sleep in the next few steps!
-  # If you have one file, you can type: {{{ scp /path/to/file.html root@192.168.1.1:/var/root/Media/EBooks }}} (assuming you've already created the EBooks directory)
-  # If you have more than one file in a local directory, for instance a book broken into chapters, you can type {{{ scp -r /path/to/directory root@192.168.1.1:/var/root/Media/EBooks }}}
+  # If you have one file, you can type: {{{ scp /path/to/file.html mobile@192.168.1.1:/var/mobile/Media/EBooks }}} (assuming you've already created the EBooks directory)
+  # If you have more than one file in a local directory, for instance a book broken into chapters, you can type {{{ scp -r /path/to/directory mobile@192.168.1.1:/var/mobile/Media/EBooks }}}
   # Enter your password and the book will be copied over!
 
 = Making your eBooks look nicer =
