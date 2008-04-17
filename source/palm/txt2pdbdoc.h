@@ -1,1 +1,0 @@
-NSData*		decodePalmDoc( FILE *fin );
