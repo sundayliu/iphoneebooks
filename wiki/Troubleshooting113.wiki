@@ -34,3 +34,16 @@ The above commands force ownership of Books related files to the mobile user and
 = Test Books Again =
 
 At this point, Books should hopefully work.  Please give it a quick test.  If it works, you can stop here.  If not, please post a message to the support mailing list with as much information about your setup as you can.
+
+= Delete Preferences File =
+
+Especially after upgrading from Books 1.3.7, it may be necessary to delete Books' preferences file.  If you see a strange, mostly off-screen blue dialog when Books starts, deleting the preferences file should fix the problem.
+
+To remove Books' preferences file, login to your device using SSH or Terminal and run the following:
+
+{{{
+rm /var/mobile/Library/Preferences/com.zacharybrewstergeisz.books.plist
+rm /var/root/Library/Preferences/com.zacharybrewstergeisz.books.plist
+}}}
+
+Log out, then start Books again.
